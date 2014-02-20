@@ -1,4 +1,4 @@
-# danny_sinatra_skeleton
+# danny sinatra skeleton
 ======================
 
 @DandyDanny's custom sinatra skeleton.
