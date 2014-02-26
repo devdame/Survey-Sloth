@@ -1,9 +1,13 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
 .container {
   margin: 20px auto;
   width: 600px;
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
 }
+
 th {
   text-align: left;
 }
@@ -21,3 +25,15 @@ th {
 .footer a:hover {
   color: orange;
 }
+
+h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 4em;
+  font-weight: 100;
+}
+
+/*
+available font weights:
+100,100italic,300,300italic,400,400italic,
+500,500italic,700,700italic,900,900italic
+*/
