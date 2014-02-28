@@ -1,7 +1,11 @@
 <h2>SIGN IN, DUDE.</h2>
 
 <form action="/sign_in" method="post">
-	<input type="text" name="user[user_name]" placeholder="user name">
-	<input type="password" name="user[password]" placeholder="password">
+	<input type="text" name="user_name" placeholder="user name">
+	<input type="password" name="password" placeholder="password">
 	<input type="submit" value="sign on in">
 </form>
+
+<%if @error_message%>
+		<li><%=@error_message%></li>
+<%end%>
