@@ -9,8 +9,16 @@
   text-decoration: none;
 }
 
+.sunny-sloth {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  height: 80%;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
+  background-color: #FDFEF8;
 }
 .container {
   margin: 20px auto;
