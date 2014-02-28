@@ -14,7 +14,7 @@ get '/sign_up' do
 end
 
 post '/sign_up' do
-	erb :sign_up
+	redirect to '/homepage'
 end
 #-----------------------
 
@@ -24,6 +24,12 @@ get '/sign_in' do
 end
 
 post '/sign_in' do
+	redirect to '/homepage'
+end
+
+#-----------------------
+
+get '/homepage' do
 	erb :homepage
 end
 
@@ -37,6 +43,7 @@ end
 post 'view_profile' do
 	erb :view_profile
 end
+
 #-----------------------
 
 
