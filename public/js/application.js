@@ -26,9 +26,25 @@ $(document).ready(function() {
     var errors = [];
     checkLength(password);
     passwordMatch(password, password_confirmation);
-    if(errors != []) {
+    if(errors.length != 0) {
     	event.preventDefault();
       errors.forEach(appendError);
     };
   });
+
+ //  +	$(element).thing(function(){
+ // +		$(this).anotherthing();
+ // +	}
+ // +
+ // +	$(another_element).on('click', function(event){
+ // +		event.preventDefault();
+ // +
+ // +		var url = ???
+ // +
+ // +		$.post(url, function(response){
+ // +			data = JSON.parse(response);
+ // +			$(thing_to_replace).function(response)
+ // +			});
+ // +	}
+
 });
