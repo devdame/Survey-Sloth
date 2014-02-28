@@ -20,7 +20,7 @@ post '/sign_up' do
 		session[:user_name] = @user.name
 		redirect to '/homepage'
 	else
-		erb :sign_up
+		erb :homepage
 	end
 end
 #-----------------------
