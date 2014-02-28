@@ -35,9 +35,11 @@ post '/sign_in' do
 	@user = User.where(user_name: params[:user][:user_name]).first
 	  if @user.authenticate(params[:user][:password])
 	    session[:user_id] = @user.id
-	    redirect '/homepage'
+	    session[:user_name] = @user.name
+	    redirect to '/homepage'
 	  else
-	    redirect '/authentication_fail'
+	 		@error_message "Error"
+	  	erb :sign_in
 	  end
 end
 
