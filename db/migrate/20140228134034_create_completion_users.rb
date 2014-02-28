@@ -1,6 +1,6 @@
 class CreateCompletionUsers < ActiveRecord::Migration
   def change
-    create_table :completions do |t|
+    create_table :completion_users do |t|
       t.belongs_to :user
       t.belongs_to :survey
 
