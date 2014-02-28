@@ -1,9 +1,50 @@
 <h2>Sign Up For An Account:</h2>
 
-<form action="/sign_up" method="post">
-	<input type="text" name="user[name]" placeholder="name">
+<form>
+	<input type="text" name="user[user_name]" placeholder="username">
 	<input type="password" name="user[password]" placeholder="password">
 	<input type="password" name="user[password_confirmation]" placeholder="password confirmation">
-	<input type="submit" value="Sign Me Up!">
-	
+	<button type="submit">sign me upppp</button>
 </form>
+
+<ul id="error_time"></ul>
+
+
+<script>
+
+$(function(){
+ 
+  $("form").on("mouseenter", function(event) {
+ 
+    function checkLength(password) {
+      if(password.length < 6) {
+        errors.push("Your password must be at least 6 characters long.");
+      };
+    };
+
+    function passwordMatch(password, password_confirmation) {
+      if(password != password_confirmation) {
+        errors.push("Your password must match the password confirmation");
+      };
+    };
+ 
+    function appendError(error, index, array) {
+      var ul = document.getElementById("error_time");
+      var newLI = document.createElement("li");
+      ul.appendChild(newLI);
+      newLI.innerHTML = error
+    }
+ 
+    var password = document.forms["sign_up"]["password"].value;
+    var password_confirmation = document.forms["sign_up"]["password_confirmation"].value;
+    var errors = [];
+    checkLength(password);
+    passwordMatch(password, password_confirmation);
+    if(errors != []) {
+    	event.preventDefault();
+    	errors.forEach(appendError);
+    };
+  });
+});
+
+</script>

@@ -14,12 +14,19 @@ get '/sign_up' do
 end
 
 post '/sign_up' do
-	redirect to '/homepage'
+	@user = User.create(params[:user])
+	if @user.valid?
+		session[:user_id] = @user.id
+		session[:user_name] = @user.name
+		redirect to '/homepage'
+	else
+		erb :sign_up
+	end
 end
 #-----------------------
 
 
-get '/sign_in' do 
+get '/sign_in' do
 	erb :sign_in
 end
 
