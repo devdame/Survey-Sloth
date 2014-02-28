@@ -1,8 +1,34 @@
 $(document).ready(function() {
-  console.log("JS ready!");
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+ 
+  $("#sign_up").on("submit", function(event) {
+ 
+    function checkLength(password) {
+      if(password.length < 6) {
+        errors.push("Your password must be at least 6 characters long.");
+      };
+    };
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+    function passwordMatch(password, password_confirmation) {
+      if(password != password_confirmation) {
+        errors.push("Your password must match the password confirmation");
+      };
+    };
+ 
+    function appendError(error, index, array) {
+      var ul = document.getElementById("error_time");
+      var newLI = document.createElement("li");
+      ul.appendChild(newLI);
+      newLI.innerHTML = error
+    }
+ 
+ 		var password = $("input[name='password']").val();
+    var password_confirmation = $("input[name='password_confirmation']").val();
+    var errors = [];
+    checkLength(password);
+    passwordMatch(password, password_confirmation);
+    if(errors != []) {
+    	event.preventDefault();
+      errors.forEach(appendError);
+    };
+  });
 });
