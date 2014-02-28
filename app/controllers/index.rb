@@ -38,7 +38,7 @@ post '/sign_in' do
 	    session[:user_name] = @user.name
 	    redirect to '/homepage'
 	  else
-	 		@error_message "Error"
+	 		@error_message = "Error"
 	  	erb :sign_in
 	  end
 end
