@@ -3,6 +3,7 @@
 ##USERS USERS USERS USERS USERS USERS USERS USERS
 #***************************************************
 #***************************************************
+
 get '/' do
   # Look in app/views/index.erb
   erb :index
@@ -33,17 +34,6 @@ get '/sign_in' do
 end
 
 post '/sign_in' do
-<<<<<<< HEAD
-	@user = User.where(user_name: params[:user_name]).first
-	if @user.authenticate(params[:user][:password])
-		session[:user_id] = @user.id
-		session[:user_name] = @user.name
-		redirect to '/homepage'
-	else
-		@error_message = "Error"
-		erb :sign_in
-	end
-=======
 	@user = User.where(user_name: params[:user][:user_name]).first
 	  if @user.authenticate(params[:user][:password])
 	    session[:user_id] = @user.id
@@ -53,7 +43,6 @@ post '/sign_in' do
 	 		@error_message "Error"
 	  	erb :sign_in
 	  end
->>>>>>> 6ec1c8efd9c5d61839435e397c903feae1c057ce
 end
 
 #-----------------------
