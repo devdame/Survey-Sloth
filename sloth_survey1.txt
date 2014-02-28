@@ -1,0 +1,29 @@
+1. Which color do you prefer?
+a. red
+b. blue
+c. yellow
+d. green
+
+2. Which fruit do you prefer?
+a. apple
+b. banana
+c. grapes
+d. pears
+
+3. How many meals do you eat daily?
+a. 2
+b. 3
+c. 4
+d. 5
+
+4. Where would you prefer to vacation?
+a. Somewhere tropical
+b. Travel Abroad
+c. Woods/Camping
+d. Big City
+
+5. Which Avenger are you?
+a. Iron Man/Tony Stark
+b. Captain America/Steve Rogers
+c. The Hulk/Bruce Banner
+d. Black Widow/Nastasha Romanov

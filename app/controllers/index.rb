@@ -116,15 +116,16 @@ end
 #-----------------------
 
 get '/edit_survey' do
-	@survey = Survey.find(params[:survey][;id])
+	@survey = Survey.find(params[:survey][:id])
 	erb :edit_survey
 end
 
 post '/edit_survey' do
-	@survey = Survey.find(params[:survey][;id])
+	@survey = Survey.find(params[:survey][:id])
 	@survey.title = params[:survey][:title]
   @survey.question = params[:survey][:question]
   @survey.response = params[:survey][:response]
   if survey.update
 	  redirect to '/homepage'
 	end
+end
