@@ -30,12 +30,15 @@ end
 #-----------------------
 
 get '/homepage' do
+	@user = User.find(session[:user_id])
+	@user_surveys = UserSurveys.all(session[:survey][:user_id])
 	erb :homepage
 end
 
 #-----------------------
 
 get 'view_profile' do
+	@user = User.find(session[:user_id])
 	erb :view_profile
 end
 
@@ -57,7 +60,8 @@ end
 #-----------------------
 
 get '/logout' do
-	erb :index
+	session.clear
+	redriect '/'
 end
 
 
@@ -66,6 +70,8 @@ end
 #******************************************************
 
 get '/browse_all' do
+	@surveys = Survey.all
+
 	erb :browse_all
 end
 
