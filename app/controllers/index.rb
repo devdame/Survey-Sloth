@@ -1,7 +1,8 @@
 #***************************************************
-##USERS_____________________________________________
 #***************************************************
-
+##USERS USERS USERS USERS USERS USERS USERS USERS
+#***************************************************
+#***************************************************
 get '/' do
   # Look in app/views/index.erb
   erb :index
@@ -31,7 +32,13 @@ get '/sign_in' do
 end
 
 post '/sign_in' do
-	redirect to '/homepage'
+	@user = User.where(user_name: params[:user][:user_name]).first
+	  if @user.authenticate(params[:user][:password])
+	    session[:user_id] = @user.id
+	    redirect '/homepage'
+	  else
+	    redirect '/authentication_fail'
+	  end
 end
 
 #-----------------------
@@ -66,14 +73,17 @@ post '/create_survey' do
 end
 #-----------------------
 
+
+
 get '/logout' do
 	session.clear
 	redriect '/'
 end
 
-
 #******************************************************
-##SURVEYS______________________________________________
+#******************************************************
+##SURVEYS SURVEYS SURVEYS SURVEYS SURVEYS SURVEYS 
+#******************************************************
 #******************************************************
 
 get '/browse_all' do
@@ -85,5 +95,36 @@ end
 post '/browse_all' do
 	erb :browse_all
 end
+#-----------------------
 
+get '/view_survey' do
+	@survey = Survey.find(params[:survey][:id])
+	if @survey.user_id == sessions[:user_id]
+		erb :view_survey
+	else
+		erb :take_survey
+	end
+end
 
+#-----------------------
+
+get '/take_survey' do
+	@survey = Survey.find(params[:survey][:id])
+	erb :take_survey
+end
+
+#-----------------------
+
+get '/edit_survey' do
+	@survey = Survey.find(params[:survey][;id])
+	erb :edit_survey
+end
+
+post '/edit_survey' do
+	@survey = Survey.find(params[:survey][;id])
+	@survey.title = params[:survey][:title]
+  @survey.question = params[:survey][:question]
+  @survey.response = params[:survey][:response]
+  if survey.update
+	  redirect to '/homepage'
+	end
