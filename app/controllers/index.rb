@@ -27,11 +27,20 @@ end
 
 
 get '/sign_in' do
+
 	erb :sign_in
 end
 
 post '/sign_in' do
-	redirect to '/homepage'
+	@user = User.where(user_name: params[:user_name]).first
+	if @user.authenticate(params[:user][:password])
+		session[:user_id] = @user.id
+		session[:user_name] = @user.name
+		redirect to '/homepage'
+	else
+		@error_message = "Error"
+		erb :sign_in
+	end
 end
 
 #-----------------------
