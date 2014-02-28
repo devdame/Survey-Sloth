@@ -81,7 +81,7 @@ end
 
 get '/logout' do
 	session.clear
-	redriect '/'
+	redirect '/'
 end
 
 #******************************************************
