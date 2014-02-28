@@ -1,3 +1,14 @@
+.home {
+  background-image: url('../media/slothcano.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 900px;
+  width: 100%;
+  text-align: center;
+  color: white; text-shadow: black 0.1em 0.1em 0.2em;
+  text-decoration: none;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
 }
