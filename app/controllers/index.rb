@@ -137,7 +137,7 @@ post '/browse_all' do
 end
 #-----------------------
 
-get '/survey/:survey_id' do
+get '/surveys/:survey_id' do
 	@survey = Survey.find(params[:survey_id])
 	if @survey.user_id == sessions[:user_id]
 		erb :view_survey
