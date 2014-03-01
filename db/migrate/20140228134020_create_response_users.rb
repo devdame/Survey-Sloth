@@ -1,6 +1,6 @@
-class CreateResponseUsers < ActiveRecord::Migration
+class CreateParticipantResponses < ActiveRecord::Migration
   def change
-    create_table :response_users do |t|
+    create_table :participant_responses do |t|
       t.belongs_to :user
       t.belongs_to :response
 
