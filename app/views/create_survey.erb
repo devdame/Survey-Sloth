@@ -6,16 +6,53 @@
 	<h3><%=@error_message%></h3>
 <%end%>
 
+
+
+
+
 <div class='container'>
-	<form action='/create_survey' method='post'>
-		<input type='text' name='question' placeholder='Survey Question'>
+	<h2 id="survey_title"></h2>
+
+	<div id="title_options">
+		<h2>First, let's give your new survey a name:</h2>
+		<form id="enter_title">
+			<input type="text" name="title" autofocus placeholder="Best Survey Ever">
+			<br>
+			<button type="submit" id="enter_title">make that survey!</button>
+		</form>
+	</div>
+
+	<div id="question_options">
+		<h2>Now it's time to add a question!</h2>
+		<form id="enter_question">
+			<input type="text" name="text" autofocus placeholder="What's the best animal?">
+			<br><br>
+			<button type="submit">add that question!</button>
+		</form>
+	</div>
+
+	<ul id="survey_errors"><ul>
+
+
+
+
+
+<!-- 
+	<form action='/create_survey' method='post' id="make_survey">
+		<input type="text" name="title" placeholder="Survey Title" value="">
+		<br><br>
+		<input type='text' name='question[text]' placeholder='Survey Question' value="">
 		<br>
 		<ul>
-		<li><input type='text' name='first_option' placeholder='Survey Option'></li>
-		<li><input type='text' name='second_option' placeholder='Survey Option'></li>
-		<li><input type='text' name='third_option' placeholder='Survey Option'></li>
-		<li><input type='text' name='fourth_option' placeholder='Survey Option'></li>
-	</ul>
+			<li><input type='text' name="option1" placeholder='Survey Option' value=""></li>
+			<li><input type='text' name="option2" placeholder='Survey Option' value=""></li>
+		</ul>
+
+		<button id="add_response">add answer</button>
+		<br><br>
+		<button id="add_question">submit question</button>
+		<br><br>
 		<input type='submit' value='Submit survey'>
-	</form>
+
+	</form> -->
 </div>
