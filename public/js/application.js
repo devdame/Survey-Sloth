@@ -23,9 +23,50 @@ $(document).ready(function() {
 
   // });
 
-  $("#add_response").on("click", function(event){
-    
+  function checkIfNull(field, errors){
+    if(field === ""){
+      errors.push("Whoah there, cowboy, gotta fill everything in!")
+    };
+  };
+
+  function appendSurveyError(error){
+      var ul = document.getElementById("survey_errors");
+      var newLI = document.createElement("li");
+      ul.appendChild(newLI);
+      newLI.innerHTML = error
+  };
+
+
+  $("#enter_title").on("submit", function(event){
+    event.preventDefault();
+    var title = $("input[name='title']").val();
+    var errors = [];
+    checkIfNull(title, errors);
+    if(errors.length != 0){
+      errors.forEach(appendSurveyError);
+    }
+    else{
+      $.ajax({
+        type: "POST",
+        url: "/create_survey",
+        data: $(this).serialize(),
+        dataType: "json",
+        accepts: "application/json",
+        success: function(response) {
+          console.log(response);
+          $("#survey_title").css("display", "block").text("Title: " + response.title);
+          $("#title_options").css("display", "none");
+          $("#survey_errors").text("");
+        }
+      });
+    };
   });
+
+
+
+  // $("#add_response").on("click", function(event){
+
+  // });
  
   $("#sign_up").on("submit", function(event) {
  
@@ -75,5 +116,4 @@ $(document).ready(function() {
  // +			});
  // +	}
 
->>>>>>> c3c249b80fb8c8869921300decc61848099335a1
 });

@@ -16,6 +16,13 @@
   height: 80%;
 }
 
+#survey_title {
+  display: none;
+}
+
+#survey_questions {
+  display: none;
+}
 
 body {
   margin-top: 50px;

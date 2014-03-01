@@ -75,29 +75,37 @@ get '/create_survey' do
 end
 
 post '/create_survey' do
-
 	@survey = Survey.create(title: params[:title], user_id: session[:user_id])
-	params[:question][:survey_id] = @survey.id
-	@question = Question.create(params[:question])
-	@first_option = Response.create(text: params[:first_option], question_id: @question.id)
-	@second_option = Response.create(text: params[:second_option], question_id: @question.id)
-	@third_option = Response.create(text: params[:third_option], question_id: @question.id)
-	@fourth_option = Response.create(text: params[:fourth_option], question_id: @question.id)
-	if @survey.valid? and @question.valid? and @first_option.valid? and @second_option.valid? and @third_option.valid? and @fourth_option.valid?
-		redirect to '/homepage'
-	else
-		@survey.destroy if @survey
-		@question.destroy if @question
-		@first_option.destroy if @first_option
-		@second_option.destroy if @second_option
-		@third_option.destroy if @third_option
-		@fourth_option.destroy if @fourth_option
-		@error_message = "error"
-		@last_entered = params
-		erb :create_survey
-	end
+	if request.xhr?
+    content_type :json
+    @survey.to_json
+  end
 end
 
+
+	# params[:question][:survey_id] = @survey.id
+	# @question = Question.create(params[:question])
+	# @first_option = Response.create(text: params[:first_option], question_id: @question.id)
+	# @second_option = Response.create(text: params[:second_option], question_id: @question.id)
+	# @third_option = Response.create(text: params[:third_option], question_id: @question.id)
+	# @fourth_option = Response.create(text: params[:fourth_option], question_id: @question.id)
+	# if @survey.valid? and @question.valid? and @first_option.valid? and @second_option.valid? and @third_option.valid? and @fourth_option.valid?
+	# 	redirect to '/homepage'
+	# else
+	# 	@survey.destroy if @survey
+	# 	@question.destroy if @question
+	# 	@first_option.destroy if @first_option
+	# 	@second_option.destroy if @second_option
+	# 	@third_option.destroy if @third_option
+	# 	@fourth_option.destroy if @fourth_option
+	# 	@error_message = "error"
+	# 	@last_entered = params
+	# 	erb :create_survey
+	# end
+
+post '/create_survey/new_question' do
+
+end
 
 #-----------------------
 
