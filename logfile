@@ -13,3 +13,7 @@ ERROR:  column users.user_name does not exist at character 39
 STATEMENT:  SELECT  "users".* FROM "users"  WHERE "users"."user_name" = 'sloth'  ORDER BY "users"."id" ASC LIMIT 1
 ERROR:  column users.user_name does not exist at character 39
 STATEMENT:  SELECT  "users".* FROM "users"  WHERE "users"."user_name" = 'sloth'  ORDER BY "users"."id" ASC LIMIT 1
+LOG:  received smart shutdown request
+LOG:  autovacuum launcher shutting down
+LOG:  shutting down
+LOG:  database system is shut down

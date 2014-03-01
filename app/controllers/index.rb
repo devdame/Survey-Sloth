@@ -75,7 +75,7 @@ get '/create_survey' do
 end
 
 post '/create_survey' do
-	@post = Post.create(params[:post])
+	@post = Survey.create(params[:post])
 	if @post.valid?
 		@post_created = true
 		redirect to '/homepage'
