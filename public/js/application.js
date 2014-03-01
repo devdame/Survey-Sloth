@@ -57,6 +57,35 @@ $(document).ready(function() {
           $("#survey_title").css("display", "block").text("Title: " + response.title);
           $("#title_options").css("display", "none");
           $("#survey_errors").text("");
+          $("#question_options").css("display", "block");
+          window.survey_id = response.id
+        }
+      });
+    };
+  });
+
+  $("#enter_question").on("submit", function(event){
+    console.log("yay I see a question being submitted");
+
+    event.preventDefault;
+    var text = $("input[name='text']").val();
+    var errors = [];
+    checkIfNull(text, errors);
+    if(errors.length != 0){
+      errors.forEach(appendSurveyError);
+    }
+    else{
+      event.preventDefault;
+      $(this).survey_id = 2;
+      console.log(this);
+      $.ajax({
+        type: "POST",
+        url: "/create_survey/question",
+        data: $(this).serialize(),
+        dataType: "json",
+        accepts: "application/json",
+        success: function(response) {
+          console.log(response);
         }
       });
     };

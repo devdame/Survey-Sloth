@@ -103,8 +103,12 @@ end
 	# 	erb :create_survey
 	# end
 
-post '/create_survey/new_question' do
-
+post '/create_survey/question' do
+	@question = Question.create(text: params[:text], survey_id: params[:survey_id])
+	if request.xhr?
+    content_type :json
+    @question.to_json
+  end
 end
 
 #-----------------------
