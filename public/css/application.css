@@ -16,12 +16,20 @@
   height: 80%;
 }
 
+#survey_title {
+  display: none;
+}
+
+#survey_questions {
+  display: none;
+}
 
 body {
   margin-top: 50px;
   font-family: 'Roboto', sans-serif;
   background-color: #FDFEF8;
 }
+
 .container {
   margin: 20px auto;
   width: 600px;
@@ -47,6 +55,10 @@ th {
   color: orange;
 }
 
+#question_options {
+  display: none;
+}
+
 h1 {
   font-family: 'Roboto', sans-serif;
   font-size: 4em;
@@ -60,6 +72,11 @@ nav {
   width: 100%;
   position: fixed;
   top: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
 }
 
 nav p {
