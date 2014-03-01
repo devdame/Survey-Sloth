@@ -34,33 +34,15 @@ get '/sign_in' do
 end
 
 post '/sign_in' do
-<<<<<<< HEAD
-<<<<<<< HEAD
-	@user = User.where(user_name: params[:user][:user_name]).first
-	  if @user.authenticate(params[:user][:password])
-	    session[:user_id] = @user.id
-	    session[:user_name] = @user.name
-	    redirect to '/homepage'
-	  else
-	 		@error_message = "Error"
-	  	erb :sign_in
-	  end
-=======
-=======
->>>>>>> ea13e8989eb00dabb48ebe5ad495cb3b82a5c536
 	@user = User.where(user_name: params[:user_name]).first
-	if @user.authenticate(params[:user][:password])
+	if @user.authenticate(params[:password])
 		session[:user_id] = @user.id
 		session[:user_name] = @user.name
 		redirect to '/homepage'
 	else
-		@error_message = "Error"
+		@error_message = "Uh oh, buddy, looks like you've gotta get your shit together.  Try again."
 		erb :sign_in
 	end
-<<<<<<< HEAD
->>>>>>> ea13e8989eb00dabb48ebe5ad495cb3b82a5c536
-=======
->>>>>>> ea13e8989eb00dabb48ebe5ad495cb3b82a5c536
 end
 
 #-----------------------
