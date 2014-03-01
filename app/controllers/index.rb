@@ -139,7 +139,7 @@ end
 
 get '/surveys/:survey_id' do
 	@survey = Survey.find(params[:survey_id])
-	if @survey.user.id == sessions[:user_id]
+	if @survey.user_id == sessions[:user_id]
 		erb :view_survey
 	else
 		redirect to "/take_survey/#{params[:survey_id]}"
