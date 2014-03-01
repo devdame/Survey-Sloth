@@ -6,7 +6,11 @@
 
 get '/' do
   # Look in app/views/index.erb
-  erb :index
+  if session[:user_id]
+  	redirect to '/homepage'
+  else
+  	erb :index
+  end
 end
 
 #-----------------------
@@ -56,13 +60,13 @@ end
 
 #-----------------------
 
-get 'users/:user_id' do
+get '/users/:user_id' do
 	@user = User.find(params[:user_id])
 	erb :view_profile
 end
 
 
-post 'users/:user_id' do
+post '/users/:user_id' do
 	@user = User.find(params[:user_id])
 	erb :view_profile
 end
