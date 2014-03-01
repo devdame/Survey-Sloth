@@ -156,11 +156,18 @@ get '/take_survey/:survey_id' do
 	erb :survey_face
 end
 
-post '/take_survey/:survey_id' do
-	@survey = ParticipantResponses.create(params)
+post '/submit' do
+	@survey = ParticipantResponse.new(params)
 	session[:user_id] = @user.id
-	session[:response_id] = @response_id
-	redirect to '/homepage'
+	@survey.user_id = session[:user_id]
+	@question_id = params[:question_id]
+	@response_id = params[:response_id]
+	if @survey.save
+		redirect to '/homepage'
+	else
+		@error_message = "Uh oh, buddy, looks like you've gotta get your shit together.  Try again."
+		erb :homepage
+	end
 end
 
 
