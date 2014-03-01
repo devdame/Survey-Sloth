@@ -1,2 +1,15 @@
-<h2>Logged in now!</h2>
+<h2>Hello, <%= @user.user_name %>!</h2>
 
+
+	<a href="/create_survey">CREATE A SLOTH BASED SURVEY!!!!11!1</a>
+
+	<div class="container">
+		<h2>Here are your surveys, Face.</h2>
+		<div id="all_your_surveys">
+			<ol>
+			<%@user.authored_surveys.each do |survey|%>
+				<li><a href='surveys/<%=survey.id%>'><%=survey.title%></a></li>
+			<%end%>
+			</ol>
+		</div>
+	</div>

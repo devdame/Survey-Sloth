@@ -16,7 +16,9 @@
   height: 80%;
 }
 
+
 body {
+  margin-top: 50px;
   font-family: 'Roboto', sans-serif;
   background-color: #FDFEF8;
 }
@@ -49,6 +51,30 @@ h1 {
   font-family: 'Roboto', sans-serif;
   font-size: 4em;
   font-weight: 100;
+}
+
+nav {
+  background-color: #2E2E2E;
+  color: white;
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+}
+
+nav p {
+  display: inline;
+}
+
+nav ul {
+  display: inline;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+nav li {
+  display: inline;
 }
 
 /*
