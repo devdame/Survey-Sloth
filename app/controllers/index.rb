@@ -34,8 +34,8 @@ get '/sign_in' do
 end
 
 post '/sign_in' do
-	@user = User.where(user_name: params[:user_name]).first
-	if @user.authenticate(params[:user][:password])
+	@user = User.where(name: params[:user_name]).first
+	if @user.authenticate(params[:user_name][:password])
 		session[:user_id] = @user.id
 		session[:user_name] = @user.name
 		redirect to '/homepage'
@@ -49,7 +49,7 @@ end
 
 get '/homepage' do
 	@user = User.find(session[:user_id])
-	@user_surveys = UserSurveys.all(session[:survey][:user_id])
+	# @user_surveys = UserSurveys.all(session[:survey][:user_id])
 	erb :homepage
 end
 
