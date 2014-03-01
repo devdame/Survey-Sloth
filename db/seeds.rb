@@ -1,17 +1,17 @@
 User:
-{user_name: , first_name: last_name: , email: , }
+{user_name: ,first_name: ,last_name: ,email: ,password: }
 
 Survey:
 {survey_title: , user_id: }
 
 Question:
-{description: , survey_id: }
+{text: , survey_id: }
 
 Response:
-{description: , question_id: }
+{text: , question_id: }
 
 User_Responses:
-{user_response: , user_id: , response_id: , }
+{user_id: , response_id: , }
 
 Completed_Surveys:
 {user_id: , survey_id: }
