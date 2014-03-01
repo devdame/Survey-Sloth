@@ -9,22 +9,23 @@ get '/' do
   erb :index
 end
 
-
 #-----------------------
+
 get '/sign_up' do
 	erb :sign_up
 end
 
 post '/sign_up' do
-	@user = User.create(params[:user])
+	@user = User.create(params)
 	if @user.valid?
 		session[:user_id] = @user.id
-		session[:user_name] = @user.name
+		session[:user_name] = @user.user_name
 		redirect to '/homepage'
 	else
 		erb :homepage
 	end
 end
+
 #-----------------------
 
 
@@ -37,7 +38,7 @@ post '/sign_in' do
 	@user = User.where(user_name: params[:user_name]).first
 	if @user.authenticate(params[:password])
 		session[:user_id] = @user.id
-		session[:user_name] = @user.name
+		session[:user_name] = @user.user_name
 		redirect to '/homepage'
 	else
 		@error_message = "Uh oh, buddy, looks like you've gotta get your shit together.  Try again."
@@ -49,19 +50,20 @@ end
 
 get '/homepage' do
 	@user = User.find(session[:user_id])
-	@user_surveys = UserSurvey.all(session[:survey][:user_id])
+	@user_surveys = @user.authored_surveys
 	erb :homepage
 end
 
 #-----------------------
 
-get 'view_profile' do
-	@user = User.find(session[:user_id])
+get 'users/:user_id' do
+	@user = User.find(params[:user_id])
 	erb :view_profile
 end
 
 
-post 'view_profile' do
+post 'users/:user_id' do
+	@user = User.find(params[:user_id])
 	erb :view_profile
 end
 
@@ -73,7 +75,14 @@ get '/create_survey' do
 end
 
 post '/create_survey' do
-	erb :create_survey
+	@post = Post.create(params[:post])
+	if @post.valid?
+		@post_created = true
+		redirect to '/homepage'
+	else
+		@error_message = "error"
+		erb :create_survey
+	end
 end
 #-----------------------
 
@@ -101,31 +110,31 @@ post '/browse_all' do
 end
 #-----------------------
 
-get '/view_survey' do
-	@survey = Survey.find(params[:survey][:id])
+get '/survey/:survey_id' do
+	@survey = Survey.find(params[:survey_id])
 	if @survey.user_id == sessions[:user_id]
 		erb :view_survey
 	else
-		erb :take_survey
+		redirect to "/take_survey/#{params[:survey_id]}"
 	end
 end
 
 #-----------------------
 
-get '/take_survey' do
-	@survey = Survey.find(params[:survey][:id])
+get '/take_survey/:survey_id' do
+	@survey = Survey.find(params[:survey_id])
 	erb :take_survey
 end
 
 #-----------------------
 
-get '/edit_survey' do
-	@survey = Survey.find(params[:survey][:id])
+get '/edit_survey/:survey_id' do
+	@survey = Survey.find(params[:survey_id])
 	erb :edit_survey
 end
 
-post '/edit_survey' do
-	@survey = Survey.find(params[:survey][:id])
+post '/edit_survey/:survey_id' do
+	@survey = Survey.find(params[:survey_id])
 	@survey.title = params[:survey][:title]
   @survey.question = params[:survey][:question]
   @survey.response = params[:survey][:response]
