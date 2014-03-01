@@ -103,6 +103,7 @@ end
 	# 	erb :create_survey
 	# end
 
+
 post '/create_survey/question' do
 	@question = Question.create(text: params[:text], survey_id: params[:survey_id])
 	if request.xhr?
@@ -122,7 +123,7 @@ end
 
 #******************************************************
 #******************************************************
-##SURVEYS SURVEYS SURVEYS SURVEYS SURVEYS SURVEYS 
+##SURVEYS SURVEYS SURVEYS SURVEYS SURVEYS SURVEYS
 #******************************************************
 #******************************************************
 

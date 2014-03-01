@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+  window.survey_id = 0;
   // $("#make_survey").on("submit", function(event) {
   //   event.preventDefault();
 
@@ -29,7 +29,7 @@ $(document).ready(function() {
     };
   };
 
-  function appendSurveyError(error){
+  function appendSurveyError(error){ // adds
       var ul = document.getElementById("survey_errors");
       var newLI = document.createElement("li");
       ul.appendChild(newLI);
@@ -41,6 +41,10 @@ $(document).ready(function() {
     event.preventDefault();
     var title = $("input[name='title']").val();
     var errors = [];
+    console.log("here:");
+    console.log(this);
+    console.log(this.to_json);
+    console.log("done");
     checkIfNull(title, errors);
     if(errors.length != 0){
       errors.forEach(appendSurveyError);
@@ -53,12 +57,11 @@ $(document).ready(function() {
         dataType: "json",
         accepts: "application/json",
         success: function(response) {
-          console.log(response);
           $("#survey_title").css("display", "block").text("Title: " + response.title);
           $("#title_options").css("display", "none");
           $("#survey_errors").text("");
           $("#question_options").css("display", "block");
-          window.survey_id = response.id
+          window.survey_id = response.id;
         }
       });
     };
@@ -67,7 +70,7 @@ $(document).ready(function() {
   $("#enter_question").on("submit", function(event){
     console.log("yay I see a question being submitted");
 
-    event.preventDefault;
+    event.preventDefault();
     var text = $("input[name='text']").val();
     var errors = [];
     checkIfNull(text, errors);
@@ -75,9 +78,7 @@ $(document).ready(function() {
       errors.forEach(appendSurveyError);
     }
     else{
-      event.preventDefault;
-      $(this).survey_id = 2;
-      console.log(this);
+      $("input[name='survey_id']").val(window.survey_id)
       $.ajax({
         type: "POST",
         url: "/create_survey/question",
@@ -85,7 +86,10 @@ $(document).ready(function() {
         dataType: "json",
         accepts: "application/json",
         success: function(response) {
-          console.log(response);
+          $("#finished_questions").append("<h3>" + response.text + "</h3><ul id='" + response.id + "'></ul>")
+          $("#question_options").css("display", "none");
+          $("#response_options").css("display", "block");
+          window.question_id = response.id;
         }
       });
     };
@@ -96,9 +100,9 @@ $(document).ready(function() {
   // $("#add_response").on("click", function(event){
 
   // });
- 
+
   $("#sign_up").on("submit", function(event) {
- 
+
     function checkLength(password) {
       if(password.length < 6) {
         errors.push("Your password must be at least 6 characters long.");
@@ -110,14 +114,14 @@ $(document).ready(function() {
         errors.push("Your password must match the password confirmation");
       };
     };
- 
+
     function appendError(error, index, array) {
       var ul = document.getElementById("error_time");
       var newLI = document.createElement("li");
       ul.appendChild(newLI);
       newLI.innerHTML = error
     }
- 
+
  		var password = $("input[name='password']").val();
     var password_confirmation = $("input[name='password_confirmation']").val();
     var errors = [];
