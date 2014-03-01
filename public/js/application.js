@@ -1,22 +1,31 @@
 $(document).ready(function() {
-<<<<<<< HEAD
-  console.log("JS ready!");
 
-	$(element).thing(function(){
-		$(this).anotherthing();
-	}
+  // $("#make_survey").on("submit", function(event) {
+  //   event.preventDefault();
 
-	$(another_element).on('click', function(event){
-		event.preventDefault();
+  //   $.ajax(url, ){
+  //     type: "POST",
+  //     url: '/',
+  //     data: this.serialize(),
+  //     dataType: "json"
+  //     accept: "application/json"
+  //     success: function(response){
 
-		var url = ???
+  //     };
+  //   };
 
-		$.post(url, function(response){
-			data = JSON.parse(response);
-			$(thing_to_replace).function(response)
-			});
-	}
-=======
+  // });
+
+  // $("#make_survey").on("submit", function(event) {
+  //   function checkIfEnteredAll(){
+
+  //   };
+
+  // });
+
+  $("#add_response").on("click", function(event){
+    
+  });
  
   $("#sign_up").on("submit", function(event) {
  

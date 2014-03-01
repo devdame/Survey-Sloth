@@ -6,16 +6,22 @@
 	<h3><%=@error_message%></h3>
 <%end%>
 
+<%@option_num = 0%>
+
 <div class='container'>
-	<form action='/create_survey' method='post'>
-		<input type='text' name='question' placeholder='Survey Question'>
+	<form action='/create_survey' method='post' id="make_survey">
+		<input type="text" name="title" placeholder="Survey Title" value="<%=@last_entered[:title] if @last_entered %>">
+		<br><br>
+		<input type='text' name='question[text]' placeholder='Survey Question' value="<%=@last_entered[:question][:text] if @last_entered %>">
 		<br>
 		<ul>
-		<li><input type='text' name='first_option' placeholder='Survey Option'></li>
-		<li><input type='text' name='second_option' placeholder='Survey Option'></li>
-		<li><input type='text' name='third_option' placeholder='Survey Option'></li>
-		<li><input type='text' name='fourth_option' placeholder='Survey Option'></li>
+		<li><input type='text' name="option<%= @option_num += 1%>" placeholder='Survey Option' value="<%=@last_entered[:first_option] if @last_entered %>"></li>
+		<li><input type='text' name="option<%= @option_num += 1%>" placeholder='Survey Option' value="<%=@last_entered[:second_option] if @last_entered %>"></li>
 	</ul>
+		<button id="add_response">new answer</button>
+		<br><br>
+		<button id="add_question">new question</button>
+		<br><br>
 		<input type='submit' value='Submit survey'>
 	</form>
 </div>
