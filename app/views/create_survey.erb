@@ -2,6 +2,10 @@
 	<h2>FACE: create a survey!</h2>
 </div>
 
+<%if @error_message%>
+	<h3><%=@error_message%></h3>
+<%end%>
+
 <div class='container'>
 	<form action='/create_survey' method='post'>
 		<input type='text' name='question' placeholder='Survey Question'>
