@@ -1,0 +1,16 @@
+<!--TEMP CODE --!>
+
+<div class='container'>
+	<h2><%= @survey.title %><h2>
+</div>
+
+<div class='container'>
+	<form id='survey_title'>
+		<div id='question'><%= @survey.questions.each do |question| %></div>
+			<h4><%= question %>
+			<div id='responses'><%= @survey.responses.each do |response| %></div>
+				<h6><% response %></h6>
+			<% end %>
+		<% end %>
+
+
