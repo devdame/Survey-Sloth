@@ -38,45 +38,23 @@ post '/sign_in' do
 	@user = User.where(name: params[:user_name]).first
 	if @user.authenticate(params[:user_name][:password])
 =======
-<<<<<<< HEAD
-<<<<<<< HEAD
-	@user = User.where(user_name: params[:user][:user_name]).first
-	  if @user.authenticate(params[:user][:password])
-	    session[:user_id] = @user.id
-	    session[:user_name] = @user.name
-	    redirect to '/homepage'
-	  else
-	 		@error_message = "Error"
-	  	erb :sign_in
-	  end
-=======
-=======
->>>>>>> ea13e8989eb00dabb48ebe5ad495cb3b82a5c536
 	@user = User.where(user_name: params[:user_name]).first
-	if @user.authenticate(params[:user][:password])
->>>>>>> bc0ad78c92b556f6b0564cdf63e923f486ea157d
+	if @user.authenticate(params[:password])
+>>>>>>> a2e7eea6bede6c5ed15be96ca78f7dd7e70fae02
 		session[:user_id] = @user.id
 		session[:user_name] = @user.name
 		redirect to '/homepage'
 	else
-		@error_message = "Error"
+		@error_message = "Uh oh, buddy, looks like you've gotta get your shit together.  Try again."
 		erb :sign_in
 	end
-<<<<<<< HEAD
->>>>>>> ea13e8989eb00dabb48ebe5ad495cb3b82a5c536
-=======
->>>>>>> ea13e8989eb00dabb48ebe5ad495cb3b82a5c536
 end
 
 #-----------------------
 
 get '/homepage' do
 	@user = User.find(session[:user_id])
-<<<<<<< HEAD
-	# @user_surveys = UserSurveys.all(session[:survey][:user_id])
-=======
 	@user_surveys = UserSurvey.all(session[:survey][:user_id])
->>>>>>> bc0ad78c92b556f6b0564cdf63e923f486ea157d
 	erb :homepage
 end
 
