@@ -17,6 +17,12 @@ end
 
 #-----------------------
 
+get '/about' do
+	erb :about
+end
+
+#-----------------------
+
 get '/sign_up' do
 	erb :sign_up
 end
@@ -54,10 +60,22 @@ end
 
 #-----------------------
 
+get '/sign_out' do
+	session.clear
+	session[:message] = "You have signed out."
+	redirect to '/'
+end
+
+#-----------------------
+
 get '/homepage' do
 	@user = User.find(session[:user_id])
-	@user_surveys = @user.authored_surveys
-	erb :homepage
+	if @user
+		@user_surveys = @user.authored_surveys
+		erb :homepage
+	else
+		redirect to '/'
+	end
 end
 
 #-----------------------
@@ -88,32 +106,25 @@ post '/create_survey' do
   end
 end
 
-
-	# params[:question][:survey_id] = @survey.id
-	# @question = Question.create(params[:question])
-	# @first_option = Response.create(text: params[:first_option], question_id: @question.id)
-	# @second_option = Response.create(text: params[:second_option], question_id: @question.id)
-	# @third_option = Response.create(text: params[:third_option], question_id: @question.id)
-	# @fourth_option = Response.create(text: params[:fourth_option], question_id: @question.id)
-	# if @survey.valid? and @question.valid? and @first_option.valid? and @second_option.valid? and @third_option.valid? and @fourth_option.valid?
-	# 	redirect to '/homepage'
-	# else
-	# 	@survey.destroy if @survey
-	# 	@question.destroy if @question
-	# 	@first_option.destroy if @first_option
-	# 	@second_option.destroy if @second_option
-	# 	@third_option.destroy if @third_option
-	# 	@fourth_option.destroy if @fourth_option
-	# 	@error_message = "error"
-	# 	@last_entered = params
-	# 	erb :create_survey
-	# end
-
 post '/create_survey/question' do
 	@question = Question.create(text: params[:text], survey_id: params[:survey_id])
 	if request.xhr?
     content_type :json
     @question.to_json
+  end
+end
+
+post '/create_survey/response' do
+	@question_id = params.delete("question_id").to_i
+	responses = []
+	params.each do |field, entry|
+		responses << Response.create(text: entry, question_id: @question_id)
+	end
+	if request.xhr?
+    content_type :json
+    responses.to_json
+  else
+  	redirect to '/homepage'
   end
 end
 
@@ -128,7 +139,7 @@ end
 
 #******************************************************
 #******************************************************
-##SURVEYS SURVEYS SURVEYS SURVEYS SURVEYS SURVEYS 
+##SURVEYS SURVEYS SURVEYS SURVEYS SURVEYS SURVEYS
 #******************************************************
 #******************************************************
 
@@ -157,16 +168,18 @@ end
 get '/take_survey/:survey_id' do
 	@survey = Survey.find(params[:survey_id])
 	session[:user_id] = @user.id
-	erb :survey_face
+	erb :take_survey
 end
 
-post '/take_survey/:survey_id' do
-	@survey = ParticipantResponses.create(params)
-	session[:user_id] = @user.id
-	session[:response_id] = @response_id
+
+post '/submit' do
+	params.each do |k, v|
+		@question_id = k
+		@response_id = v
+		@participant_response = ParticipantResponse.create(user_id: session[:user_id], question_id: @question_id, response_id: @response_id)
+	end
 	redirect to '/homepage'
 end
-
 
 #-----------------------
 

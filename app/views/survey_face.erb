@@ -3,18 +3,17 @@
 </div>
 
 <div class='container'>
-	<form id='survey_title' method="POST" action="/take_survey/:survey_id">
-		<div id='question'><% @survey.questions.each do |question| %>
-			<ol>
-				<li><%= question %></li>
-					  <input type="radio", name="response" value="<% response %>">
-					<div id='responses'><% @survey.responses.each do |response| %>
-						<ol>
-							<li><% response %></li>
-							<% end %>
-						</ol>
-					<% end %>
-			</ol>	
-		</div>
-	</form>
-</div>
+	<form method="POST" action='/submit'>
+	<ol><% @survey.questions.each do |question| %>
+		<li><%= question[:text] %></li>
+			<div>
+				<div class="responses"><ul><% question.responses.each do |response| %>
+					<li><input type="radio" name='<%= question.id %>' value='<%= response.id %>'> <%= response[:text] %></li>
+				<% end %></ul></div>
+			</div>
+	<% end %></ol>
+	<input type="submit" value="Submit">	
+	<form>
+</div>		
+
+

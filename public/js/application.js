@@ -1,41 +1,21 @@
 $(document).ready(function() {
+  window.survey_id = 0;
+  window.question_id = 0;
+  window.response_count = 3;
+  window.button_pressed = "";
 
-  // $("#make_survey").on("submit", function(event) {
-  //   event.preventDefault();
-
-  //   $.ajax(url, ){
-  //     type: "POST",
-  //     url: '/',
-  //     data: this.serialize(),
-  //     dataType: "json"
-  //     accept: "application/json"
-  //     success: function(response){
-
-  //     };
-  //   };
-
-  // });
-
-  // $("#make_survey").on("submit", function(event) {
-  //   function checkIfEnteredAll(){
-
-  //   };
-
-  // });
-
-  function checkIfNull(field, errors){
+  function checkIfNull(field, errors){ // records an error if they didn't fill in the field
     if(field === ""){
       errors.push("Whoah there, cowboy, gotta fill everything in!")
     };
   };
 
-  function appendSurveyError(error){
+  function appendSurveyError(error){ // shows any errors on the survey creation page to the user
       var ul = document.getElementById("survey_errors");
       var newLI = document.createElement("li");
       ul.appendChild(newLI);
       newLI.innerHTML = error
   };
-
 
   $("#enter_title").on("submit", function(event){
     event.preventDefault();
@@ -53,12 +33,11 @@ $(document).ready(function() {
         dataType: "json",
         accepts: "application/json",
         success: function(response) {
-          console.log(response);
           $("#survey_title").css("display", "block").text("Title: " + response.title);
           $("#title_options").css("display", "none");
           $("#survey_errors").text("");
           $("#question_options").css("display", "block");
-          window.survey_id = response.id
+          window.survey_id = response.id;
         }
       });
     };
@@ -67,7 +46,7 @@ $(document).ready(function() {
   $("#enter_question").on("submit", function(event){
     console.log("yay I see a question being submitted");
 
-    event.preventDefault;
+    event.preventDefault();
     var text = $("input[name='text']").val();
     var errors = [];
     checkIfNull(text, errors);
@@ -75,9 +54,7 @@ $(document).ready(function() {
       errors.forEach(appendSurveyError);
     }
     else{
-      event.preventDefault;
-      $(this).survey_id = 2;
-      console.log(this);
+      $("input[name='survey_id']").val(window.survey_id)
       $.ajax({
         type: "POST",
         url: "/create_survey/question",
@@ -85,20 +62,55 @@ $(document).ready(function() {
         dataType: "json",
         accepts: "application/json",
         success: function(response) {
-          console.log(response);
+          $("#finished_questions").append("<h3>" + response.text + "</h3><ul id='" + response.id + "'></ul>")
+          $("#question_options").css("display", "none");
+          $("#response_options").css("display", "block");
+          document.getElementById("enter_question").reset();
+          window.question_id = response.id;
         }
       });
     };
   });
 
+  $("#submit_survey").on("click", function(event){
+    window.button_pressed = "submit survey"
+  });
+
+  $("#add_another_response").on("click", function(event){
+    event.preventDefault();
+    $("#extra_responses").append("<input type='text' class='response_field' name='response" + window.response_count++ + "'>");
+  });
+
+  $("#enter_responses").on("submit", function(event){
+    event.preventDefault();
+    $("input[name='question_id']").val(window.question_id)
+      $.ajax({
+        type: "POST",
+        url: "/create_survey/response",
+        data: $(this).serialize(),
+        dataType: "json",
+        accepts: "application/json",
+        success: function(response) {
+          $("#question_options").css("display", "block");
+          $("#response_options").css("display", "none");
+          response.forEach(function(object){
+          $("#" + window.question_id).append("<li>" + object.text +"</li>");
+          document.getElementById("enter_responses").reset();
+          $("#extra_responses").empty();
+          });
+        }
+      });
+    if(window.button_pressed == "submit survey"){
+      window.location.href = "/homepage";
+    }
+  });
 
 
-  // $("#add_response").on("click", function(event){
 
-  // });
- 
+
+
   $("#sign_up").on("submit", function(event) {
- 
+
     function checkLength(password) {
       if(password.length < 6) {
         errors.push("Your password must be at least 6 characters long.");
@@ -110,14 +122,14 @@ $(document).ready(function() {
         errors.push("Your password must match the password confirmation");
       };
     };
- 
+
     function appendError(error, index, array) {
       var ul = document.getElementById("error_time");
       var newLI = document.createElement("li");
       ul.appendChild(newLI);
       newLI.innerHTML = error
     }
- 
+
  		var password = $("input[name='password']").val();
     var password_confirmation = $("input[name='password_confirmation']").val();
     var errors = [];
