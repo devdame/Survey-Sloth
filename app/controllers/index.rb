@@ -112,6 +112,20 @@ post '/create_survey/question' do
   end
 end
 
+post '/create_survey/response' do
+	@question_id = params.delete("question_id").to_i
+	responses = []
+	params.each do |field, entry|
+		responses << Response.create(text: entry, question_id: @question_id)
+	end
+	if request.xhr?
+    content_type :json
+    responses.to_json
+  else
+  	redirect to '/homepage'
+  end
+end
+
 #-----------------------
 
 
