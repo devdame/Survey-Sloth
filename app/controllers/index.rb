@@ -13,6 +13,12 @@ end
 
 #-----------------------
 
+get '/about' do
+	erb :about
+end
+
+#-----------------------
+
 get '/sign_up' do
 	erb :sign_up
 end
@@ -168,23 +174,18 @@ end
 get '/take_survey/:survey_id' do
 	@survey = Survey.find(params[:survey_id])
 	session[:user_id] = @user.id
-	erb :survey_face
+	erb :take_survey
 end
+
 
 post '/submit' do
-	@survey = ParticipantResponse.new(params)
-	session[:user_id] = @user.id
-	@survey.user_id = session[:user_id]
-	@question_id = params[:question_id]
-	@response_id = params[:response_id]
-	if @survey.save
-		redirect to '/homepage'
-	else
-		@error_message = "Uh oh, buddy, looks like you've gotta get your shit together.  Try again."
-		erb :homepage
+	params.each do |k, v|
+		@question_id = k
+		@response_id = v
+		@participant_response = ParticipantResponse.create(user_id: session[:user_id], question_id: @question_id, response_id: @response_id)
 	end
+	redirect to '/homepage'
 end
-
 
 #-----------------------
 
