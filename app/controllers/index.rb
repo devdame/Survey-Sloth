@@ -105,11 +105,26 @@ end
 	# 	erb :create_survey
 	# end
 
+
 post '/create_survey/question' do
 	@question = Question.create(text: params[:text], survey_id: params[:survey_id])
 	if request.xhr?
     content_type :json
     @question.to_json
+  end
+end
+
+post '/create_survey/response' do
+	@question_id = params.delete("question_id").to_i
+	responses = []
+	params.each do |field, entry|
+		responses << Response.create(text: entry, question_id: @question_id)
+	end
+	if request.xhr?
+    content_type :json
+    responses.to_json
+  else
+  	redirect to '/homepage'
   end
 end
 
@@ -124,7 +139,7 @@ end
 
 #******************************************************
 #******************************************************
-##SURVEYS SURVEYS SURVEYS SURVEYS SURVEYS SURVEYS 
+##SURVEYS SURVEYS SURVEYS SURVEYS SURVEYS SURVEYS
 #******************************************************
 #******************************************************
 

@@ -20,6 +20,9 @@ gem 'pry-nav'
 
 gem 'shotgun'
 
+gem 'pry'
+gem 'pry-nav'
+
 gem 'bcrypt'
 gem 'bcrypt-ruby'
 

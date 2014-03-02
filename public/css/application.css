@@ -16,6 +16,10 @@
   height: 80%;
 }
 
+#finished_questions h3 {
+  text-decoration: underline;
+}
+
 #survey_title {
   display: none;
 }
@@ -88,6 +92,22 @@ nav ul {
   position: absolute;
   right: 0;
   top: 0;
+}
+
+#response_options {
+  display: none;
+}
+
+#title_options input {
+  width:100%;
+}
+
+#response_options input {
+  width:100%;
+}
+
+#question_options input {
+  width:100%;
 }
 
 nav li {

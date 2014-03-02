@@ -12,6 +12,8 @@
 
 <div class='container'>
 	<h2 id="survey_title"></h2>
+	<div id="finished_questions">
+	</div>
 
 	<div id="title_options">
 		<h2>First, let's give your new survey a name:</h2>
@@ -22,22 +24,38 @@
 		</form>
 	</div>
 
+
 	<div id="question_options">
-		<h2>Now it's time to add a question!</h2>
+		<h2>Enter the question you'd like to ask:</h2>
 		<form id="enter_question">
 			<input type="text" name="text" autofocus placeholder="What's the best animal?">
+			<input type="hidden" name="survey_id">
 			<br><br>
-			<button type="submit">add that question!</button>
+			<button type="submit">Add Question</button>
 		</form>
 	</div>
 
+	<div id="response_options">
+		<h2>Enter the possible responses users can choose for your question:</h2>
+		<form id="enter_responses">
+				<input type="text" class="response_field" name="response1" placeholder="Sloths!">
+				<br><input type="text" class="response_field" name="response2" placeholder="I can't disagree--sloths for me, too!">
+				<div id="extra_responses"></div>
+				<input type="hidden" name="question_id">
+				<br><br>
+				<button id="add_another_response">Add another response</button>
+				<button type="submit">Submit responses and add another question</button>
+				<button id="submit_survey" type="submit">IT'S PERFECT! SUBMIT THE WHOLE SURVEY.</button>
+		</form>
+	</div>
 	<ul id="survey_errors"><ul>
 
+</div>
+</div>
 
 
 
-
-<!-- 
+<!--
 	<form action='/create_survey' method='post' id="make_survey">
 		<input type="text" name="title" placeholder="Survey Title" value="">
 		<br><br>
