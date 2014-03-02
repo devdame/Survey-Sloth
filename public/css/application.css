@@ -9,6 +9,19 @@
   text-decoration: none;
 }
 
+.sign_stuff {
+  display: inline;
+}
+
+.sign_stuff:first {
+  margin-right: ;
+}
+
+.home a {
+  color: white;
+  text-decoration: none;
+}
+
 .sunny-sloth {
   position: fixed;
   bottom: 0;

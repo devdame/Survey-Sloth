@@ -74,7 +74,6 @@ $(document).ready(function() {
 
   $("#submit_survey").on("click", function(event){
     window.button_pressed = "submit survey"
-    // $("input[name='question_id']").val(window.question_id)
   });
 
   $("#add_another_response").on("click", function(event){
