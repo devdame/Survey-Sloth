@@ -29,6 +29,30 @@
   height: 80%;
 }
 
+.headphone-sloth {
+  position: fixed;
+  bottom: 30%;
+  right: 0;
+  height: 40%;
+  z-index: -1;
+}
+
+.birthday-sloth {
+  position: fixed;
+  bottom: 45%;
+  left: 0;
+  height: 50%;
+  z-index: -1;
+}
+
+.slothstronaut {
+  height: 400px;
+}
+
+.about {
+  text-align: center;
+}
+
 #finished_questions h3 {
   text-decoration: underline;
 }
