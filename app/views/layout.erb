@@ -21,12 +21,20 @@
 </head>
 <body>
   <nav>
-    <p><a href='/'>Survey Sloth</a></p>
-    <ul>
-      <li><a href='/sign_in'>Sign In</a></li>
-      <li><a href='/sign_up'>Sign Up</a></li>
-      <li><a href='/about'>About</a></li>
-    </ul>
+    <% if session[:user_id] %>
+      <p><a href='/homepage'>Survey Sloth</a></p>
+          <ul>
+        <li><a href='/sign_out'>Sign Out</a></li>
+        <li><a href='/about'>About</a></li>
+      </ul>
+    <% else %>
+      <p><a href='/'>Survey Sloth</a></p>
+      <ul>
+        <li><a href='/sign_in'>Sign In</a></li>
+        <li><a href='/sign_up'>Sign Up</a></li>
+        <li><a href='/about'>About</a></li>
+      </ul>
+    <% end %>
   </nav>
   <%= yield %>
 </body>

@@ -56,6 +56,14 @@ end
 
 #-----------------------
 
+get '/sign_out' do
+	session.clear
+	session[:message] = "You have signed out."
+	redirect to '/'
+end
+
+#-----------------------
+
 get '/homepage' do
 	@user = User.find(session[:user_id])
 	if @user
