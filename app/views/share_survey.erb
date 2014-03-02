@@ -1,0 +1,29 @@
+<h1>Sharing is Caring</h1>
+<p>How about inviting a few fellow sloths to take your survey?</p>
+<form name="share-survey" id="" action="/share" method="post">
+
+  <p>Select a survey to share</p>
+  <select>
+    <% @user_surveys.each do |survey| %>
+      <option value="<%=  survey.id %>"><%= survey.title %></option>
+    <% end %>
+  </select>
+
+
+  <p>Name</p>
+  <input name="name" type="text" placeholder="<%= @user.user_name %>">
+  <p>Recipients' email addresses</p>
+  <textarea name="emails" placeholder="Email addresses, separated by comma"></textarea>
+  <p>Subject</p>
+  <input name="subject" type="text" value="Come take a survey!">
+  <p>Message</p>
+  <textarea name="emails"><%= @user.user_name %> would love you so much more if you can take this survey!
+
+  --one time use url here--</textarea>
+  <p>All set ready to go</p>
+
+  <button type="submit">Invite!</button>
+
+
+</form>
+

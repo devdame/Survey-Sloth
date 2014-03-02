@@ -26,6 +26,8 @@ gem 'pry-nav'
 gem 'bcrypt'
 gem 'bcrypt-ruby'
 
+gem 'pony'
+
 group :test do
   gem 'faker'
   gem 'rspec'

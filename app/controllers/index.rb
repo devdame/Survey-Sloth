@@ -195,3 +195,26 @@ post '/edit_survey/:survey_id' do
 	  redirect to '/homepage'
 	end
 end
+
+
+
+
+
+
+#################################################
+############### SHARE SHARE SHARE ###############
+#################################################
+
+get '/share' do
+  @user = User.find(session[:user_id])
+  if @user
+    @user_surveys = @user.authored_surveys
+    erb :share_survey
+  else
+    redirect to '/'
+  end
+end
+
+post '/share' do
+  "#{params}"
+end
