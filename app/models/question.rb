@@ -3,4 +3,5 @@ class Question < ActiveRecord::Base
   has_many :responses
 
   validates :text, presence: true
+  validates :survey_id, presence: true
 end
