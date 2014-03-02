@@ -2,6 +2,7 @@ $(document).ready(function() {
   window.survey_id = 0;
   window.question_id = 0;
   window.response_count = 3;
+  window.button_pressed = "";
 
   function checkIfNull(field, errors){ // records an error if they didn't fill in the field
     if(field === ""){
@@ -72,7 +73,7 @@ $(document).ready(function() {
   });
 
   $("#submit_survey").on("click", function(event){
-    console.log("yeesss?");
+    window.button_pressed = "submit survey"
     // $("input[name='question_id']").val(window.question_id)
   });
 
@@ -100,6 +101,9 @@ $(document).ready(function() {
           });
         }
       });
+    if(window.button_pressed == "submit survey"){
+      window.location.href = "/homepage";
+    }
   });
 
 
