@@ -52,8 +52,12 @@ end
 
 get '/homepage' do
 	@user = User.find(session[:user_id])
-	@user_surveys = @user.authored_surveys
-	erb :homepage
+	if @user
+		@user_surveys = @user.authored_surveys
+		erb :homepage
+	else
+		redirect to '/'
+	end
 end
 
 #-----------------------
@@ -83,28 +87,6 @@ post '/create_survey' do
     @survey.to_json
   end
 end
-
-
-	# params[:question][:survey_id] = @survey.id
-	# @question = Question.create(params[:question])
-	# @first_option = Response.create(text: params[:first_option], question_id: @question.id)
-	# @second_option = Response.create(text: params[:second_option], question_id: @question.id)
-	# @third_option = Response.create(text: params[:third_option], question_id: @question.id)
-	# @fourth_option = Response.create(text: params[:fourth_option], question_id: @question.id)
-	# if @survey.valid? and @question.valid? and @first_option.valid? and @second_option.valid? and @third_option.valid? and @fourth_option.valid?
-	# 	redirect to '/homepage'
-	# else
-	# 	@survey.destroy if @survey
-	# 	@question.destroy if @question
-	# 	@first_option.destroy if @first_option
-	# 	@second_option.destroy if @second_option
-	# 	@third_option.destroy if @third_option
-	# 	@fourth_option.destroy if @fourth_option
-	# 	@error_message = "error"
-	# 	@last_entered = params
-	# 	erb :create_survey
-	# end
-
 
 post '/create_survey/question' do
 	@question = Question.create(text: params[:text], survey_id: params[:survey_id])
