@@ -1,15 +1,74 @@
+<script>
+$(document).ready(function () {
+	$('#tab1').show();
+	  $( "a" ).click(function() {
+    // var hide_href = $(this).attr('href');
+    var active_ref = $(".active").children().attr("href")
+    $( ".active" ).removeClass("active");
+    $(this).parent().addClass("active");
+    var show_href = $(this).attr("href");
+ 
+    $(".tab").hide();
+    $(show_href).show();
+  });
+});
+</script>
+<!-- <body background="../media/sloth.jpg"> -->
 <h2>Hello, <%= @user.user_name %>!</h2>
 
 
-	<a href="/create_survey">CREATE A SLOTH BASED SURVEY!!!!11!1</a>
+	<button  class='create_survey'><a href="/create_survey">CREATE A SLOTH BASED SURVEY!</a></button>
 
-	<div class="container">
-		<h2>Here are your surveys, Face.</h2>
-		<div id="all_your_surveys">
-			<ol>
-			<%@user.authored_surveys.each do |survey|%>
-				<li><a href='surveys/<%=survey.id%>'><%=survey.title%></a></li>
-			<%end%>
-			</ol>
-		</div>
+	<div class="container2">
+		<ul class="tabs">
+        <li class="active"><a href="#tab1">First tab</a></li>
+        <li><a href="#tab2">Second tab</a></li>
+        <li><a href="#tab3">Third tab</a></li>
+    </ul>
+ 
+    <div class="tab" id="tab1">
+     <h2>Here are your surveys, Face.</h2>
+			<div id="all_your_surveys">
+				<ol>
+				<%@user.authored_surveys.each do |survey|%>
+					<li><a href='edit_survey/<%= survey.id %>'><%=survey.title%></a></li>
+				<%end%>
+				</ol>
+			</div>
+    </div>
+ 
+    <div class="tab" id="tab2">
+        <h2><%= @user.user_name %></h2>
+	      <img src="../media/profile.jpg" class='profilePic'>
+	      <p>Email: <%=@user.email%></p>
+        <div class='info'>
+        	<h3>Get to know <%=@user.user_name%>!</h3>
+        	<p>This is some random test text... test text, that's kinda funny
+        		I doubt anyone's gonna read this, so you should just stop reading if you
+        		are, it's not really going anywhere...</p>
+        </div>
+        <div class="profSurveys">
+	        <p>Take one of <%= @user.user_name%>'s surveys'!</p>
+
+					<ol>
+					<%@user.authored_surveys.each do |survey|%>
+						<li><a href='surveys/<%=survey.id%>'><%=survey.title%></a></li>
+					<%end%>
+					</ol>
+				</div>
+    </div>
+ 
+    <div class="tab" id="tab3">
+        <h2>Take and View other surveys!</h2>
+			<div id="other_surveys">
+				<ol>
+				<%Survey.all.each do |survey|%>
+					<li><a href='surveys/<%=survey.id%>'><%=survey.title%></a></li>
+				<%end%>
+				</ol>
+			</div>
+    </div><br>
+		
 	</div>
+</body>
+

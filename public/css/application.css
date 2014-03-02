@@ -37,6 +37,24 @@ body {
   border: 1px dotted black;
 }
 
+.container2{
+  background: linear-gradient(40deg, white 20%, #FFFFF0 80%);
+  box-shadow: 10px 10px 5px #888888;
+  margin: 10px auto;
+  width: 800px;
+  padding: 10px;
+  border: 1px solid #000;
+  z-index: 15;
+}
+
+.container3{
+  background: linear-gradient(40deg, white 20%, #FFFFF0 80%);
+  box-shadow: 10px 10px 5px #888888;
+  margin: 10px;
+  width: 700px;
+  padding: 10px;
+  border: 1px solid #000;
+}
 th {
   text-align: left;
 }
@@ -92,6 +110,102 @@ nav ul {
 
 nav li {
   display: inline;
+  padding: 10px; 
+}
+
+.tab {
+    display: none;
+}
+.tabs {
+    float: left;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    margin-bottom: 16px;
+    list-style: none;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+.tabs li {
+    float: left;
+    margin-right: 16px;
+    padding: 10px 15px;
+    height: 30px;
+    line-height: 30px;
+}
+.tabs li a {
+    color: #666;
+    font-family: Helvetica, Arial, sans-serif;
+    text-decoration: none;
+}
+
+.tabs li.active {
+    border: 1px solid #ccc;
+    border-bottom: 1px solid white;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    margin-bottom: -1px;
+    height: 31px;
+    padding: 9px 14px;
+}
+ 
+.tabs li.active a {
+    color: black;
+    text-decoration: none;
+    border-bottom: none;
+}
+
+.profilePic{
+  width: 20%;
+  height: 20%;
+  padding: 3px;
+  border: 1px solid black;
+}
+
+.profSurveys{
+  margin: 0px auto;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-radius: 1000px;
+  width: 50%;
+  border-top-style: groove;
+  text-align: center;
+  position: relative;
+  bottom: 50px;
+}
+
+.profSurveys ol{
+  position: relative;
+  display: inline-block;
+}
+
+.info{
+  width: 50%;
+  position: relative;
+  left: 300px;
+  top: -250px;
+}
+
+.info p{
+  background: linear-gradient(40deg, white 20%, #FFFFF0 80%);
+  box-shadow: 3px 3px 1px #888888;
+  border: 2px solid black;
+  border-radius: 15px;
+  padding: 5px;
+}
+
+.analytics{
+
+}
+
+.create_survey{
+  position: absolute;
+  left: 800px;
+  top: 125px;
+}
+
+.create_survey a{
+  color: black;
+  text-decoration: none;
 }
 
 /*
