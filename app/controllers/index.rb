@@ -1,3 +1,5 @@
+require 'pry'
+
 #***************************************************
 #***************************************************
 ##USERS USERS USERS USERS USERS USERS USERS USERS
@@ -154,8 +156,8 @@ end
 
 get '/surveys/:survey_id' do
 	@survey = Survey.find(params[:survey_id])
-	if @survey.user_id == sessions[:user_id]
-		erb :view_survey
+	if @survey.user_id == session[:user_id]
+		erb :survey_face ###NEEDS TO CHANGE
 	else
 		redirect to "/take_survey/#{params[:survey_id]}"
 	end
@@ -165,8 +167,24 @@ end
 
 get '/take_survey/:survey_id' do
 	@survey = Survey.find(params[:survey_id])
-	erb :take_survey
+	session[:user_id] = @user.id
+	erb :survey_face
 end
+
+post '/submit' do
+	@survey = ParticipantResponse.new(params)
+	session[:user_id] = @user.id
+	@survey.user_id = session[:user_id]
+	@question_id = params[:question_id]
+	@response_id = params[:response_id]
+	if @survey.save
+		redirect to '/homepage'
+	else
+		@error_message = "Uh oh, buddy, looks like you've gotta get your shit together.  Try again."
+		erb :homepage
+	end
+end
+
 
 #-----------------------
 

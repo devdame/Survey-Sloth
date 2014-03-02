@@ -18,7 +18,7 @@ d. 5
 
 4. Where would you prefer to vacation?
 a. Somewhere tropical
-b. Travel Abroad
+b. Europe
 c. Woods/Camping
 d. Big City
 
@@ -27,3 +27,53 @@ a. Iron Man/Tony Stark
 b. Captain America/Steve Rogers
 c. The Hulk/Bruce Banner
 d. Black Widow/Nastasha Romanov
+
+
+
+{question: {id: 1, text: "Which color do you prefer?", belongs_to: "sloth_survey1", created_at: 2014-03-01 02:11, updated_at: 2014-03-01 02:11 }}
+
+{response: {id: 1, text: "red", belongs_to: question.id[1], created_at: 2014-03-01 02:15, updated_at: 2014-03-01 02:15}
+					 {id: 2, text: "blue", belongs_to: question.id[1], created_at: 2014-03-01 02:15, updated_at: 2014-03-01 02:15}
+					 {id: 3, text: "yellow", belongs_to: question.id[1], created_at: 2014-03-01 02:15, updated_at: 2014-03-01 02:15}
+					 {id: 4, text: "green", belongs_to: question.id[1], created_at: 2014-03-01 02:15, updated_at: 2014-03-01 02:15}
+}
+
+
+
+{question: {id: 2, text: "Which fruit do you prefer?", belongs_to: "sloth_survey1", created_at: 2014-03-01 02:17, updated_at: 2014-03-01 02:17 }}
+
+{response: {id: 1, text: "apple", belongs_to: question.id[2], created_at: 2014-03-01 02:18, updated_at: 2014-03-01 02:18}
+					 {id: 2, text: "banana", belongs_to: question.id[2], created_at: 2014-03-01 02:18, updated_at: 2014-03-01 02:18}
+					 {id: 3, text: "grapes", belongs_to: question.id[2], created_at: 2014-03-01 02:18, updated_at: 2014-03-01 02:18}
+					 {id: 4, text: "pears", belongs_to: question.id[2], created_at: 2014-03-01 02:18, updated_at: 2014-03-01 02:18}
+}
+
+
+
+{question: {id: 3, text: "How many meals do you eat daily?", belongs_to: "sloth_survey1", created_at: 2014-03-01 02:19, updated_at: 2014-03-01 02:19 }}
+
+{response: {id: 1, text: "2", belongs_to: question.id[3], created_at: 2014-03-01 02:19, updated_at: 2014-03-01 02:19}
+					 {id: 2, text: "3", belongs_to: question.id[3], created_at: 2014-03-01 02:19, updated_at: 2014-03-01 02:19}
+					 {id: 3, text: "4", belongs_to: question.id[3], created_at: 2014-03-01 02:19, updated_at: 2014-03-01 02:19}
+					 {id: 4, text: "5", belongs_to: question.id[3], created_at: 2014-03-01 02:19, updated_at: 2014-03-01 02:19}
+}
+
+
+
+{question: {id: 4, text: "Where would you prefer to vacation?", belongs_to: "sloth_survey1", created_at: 2014-03-01 02:22, updated_at: 2014-03-01 02:22 }}
+
+{response: {id: 1, text: "Somewhere tropical", belongs_to: question.id[4], created_at: 2014-03-01 02:22, updated_at: 2014-03-01 02:22}
+					 {id: 2, text: "Europe", belongs_to: question.id[4], created_at: 2014-03-01 02:22, updated_at: 2014-03-01 02:22}
+					 {id: 3, text: "Woods/Camping", belongs_to: question.id[4], created_at: 2014-03-01 02:22, updated_at: 2014-03-01 02:22}
+					 {id: 4, text: "Big City", belongs_to: question.id[4], created_at: 2014-03-01 02:22, updated_at: 2014-03-01 02:22}
+}
+
+
+
+{question: {id: 5, text: "Which Avenger are you?", belongs_to: "sloth_survey1", created_at: 2014-03-01 02:23, updated_at: 2014-03-01 02:23 }}
+
+{response: {id: 1, text: "Iron Man/Tony Stark", belongs_to: question.id[5], created_at: 2014-03-01 02:28, updated_at: 2014-03-01 02:28}
+					 {id: 2, text: "Captain America/Steve Rogers", belongs_to: question.id[5], created_at: 2014-03-01 02:28, updated_at: 2014-03-01 02:28}
+					 {id: 3, text: "The Hulk/Bruce Banner", belongs_to: question.id[5], created_at: 2014-03-01 02:28, updated_at: 2014-03-01 02:28}
+					 {id: 4, text: "Black Widow/Natasha Romanov", belongs_to: question.id[5], created_at: 2014-03-01 02:28, updated_at: 2014-03-01 02:28}
+}

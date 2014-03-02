@@ -15,6 +15,9 @@ gem 'activerecord'
 
 gem 'rake'
 
+gem 'pry'
+gem 'pry-nav'
+
 gem 'shotgun'
 
 gem 'pry'
