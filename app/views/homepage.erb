@@ -7,7 +7,7 @@ $(document).ready(function () {
     $( ".active" ).removeClass("active");
     $(this).parent().addClass("active");
     var show_href = $(this).attr("href");
- 
+
     $(".tab").hide();
     $(show_href).show();
   });
@@ -25,18 +25,19 @@ $(document).ready(function () {
         <li><a href="#tab2">Second tab</a></li>
         <li><a href="#tab3">Third tab</a></li>
     </ul>
- 
+
     <div class="tab" id="tab1">
      <h2>Here are your surveys, Face.</h2>
 			<div id="all_your_surveys">
 				<ol>
 				<%@user.authored_surveys.each do |survey|%>
-					<li><a href='edit_survey/<%= survey.id %>'><%=survey.title%></a></li>
+          <li><%=survey.title%>
+            <br><a href="#">Stats</a> | <a href="/edit_survey/<%= survey.id %>">Edit</a> | <a href="/delete_survey/<%= survey.id %>">Delete</a></li>
 				<%end%>
 				</ol>
 			</div>
     </div>
- 
+
     <div class="tab" id="tab2">
         <h2><%= @user.user_name %></h2>
 	      <img src="../media/profile.jpg" class='profilePic'>
@@ -57,7 +58,7 @@ $(document).ready(function () {
 					</ol>
 				</div>
     </div>
- 
+
     <div class="tab" id="tab3">
         <h2>Take and View other surveys!</h2>
 			<div id="other_surveys">
@@ -68,7 +69,7 @@ $(document).ready(function () {
 				</ol>
 			</div>
     </div><br>
-		
+
 	</div>
 
 	<img src="../media/headphone-sloth-transparent.png" class="headphone-sloth">

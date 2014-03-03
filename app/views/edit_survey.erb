@@ -1,17 +1,20 @@
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script type="text/javascript" src="../js/analytics.js"></script>
+<div class="container">
+  <h1>Edit <%= @survey.title%></h1>
 
+  <form method="POST" action='/edit_survey/<%= @survey.id %>'>
+  Survey title:
+  <input type="text" name="title" value="<%= @survey.title%>">
 
+  <ol><% @survey.questions.each do |question| %>
+    <li><input class="question-text" type="text" name="" value="<%= question[:text] %>"><a href="/delete_question/<%= question.id %>">Delete</a></li>
+      <div>
+        <div class="responses"><ul><% question.responses.each do |response| %>
+          <li><input type="text" name='<%= question.id %>' value='<%= response[:text] %>'><a href="/delete_response/<%= response.id %>">Delete</a></li>
+        <% end %></ul></div>
+      </div>
+  <% end %></ol>
 
-<html>
-<head>
-  <title><%= @survey.title%></title>
-</head>
-<div class='container3'>
-  <div class='analytics'>
-  </div>
+  <input type="submit" value="I'm done editing. Take me home.">
+  <form>
+
 </div>
-<body>  
-
-</body>
-</html>

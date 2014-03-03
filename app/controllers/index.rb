@@ -183,6 +183,7 @@ end
 
 get '/edit_survey/:survey_id' do
 	@survey = Survey.find(params[:survey_id])
+  p @survey
 	erb :edit_survey
 end
 
@@ -194,4 +195,17 @@ post '/edit_survey/:survey_id' do
   if survey.update
 	  redirect to '/homepage'
 	end
+end
+
+get '/delete_survey/:survey_id' do
+  Survey.find(params[:survey_id]).destroy
+  redirect to '/homepage'
+end
+
+get '/delete_question/:question_id' do
+  # Question.find(params[:question_id]).destroy
+end
+
+get '/delete_response/:response_id' do
+  # Response.find(params[:response_id]).destroy
 end
