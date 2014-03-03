@@ -47,7 +47,7 @@ $(document).ready(function () {
     </div>
 
     <div class="tab" id="tab2">
-     <h2>Here are your surveys, Face.</h2>
+     <h2>Here are your surveys, <%=@user.user_name%>.</h2>
 			<div id="all_your_surveys">
 				<ol>
 				<%@user.authored_surveys.each do |survey|%>

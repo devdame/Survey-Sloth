@@ -165,7 +165,6 @@ end
 
 get '/take_survey/:survey_id' do
 	@survey = Survey.find(params[:survey_id])
-	session[:user_id] = @user.id
 	erb :take_survey
 end
 
