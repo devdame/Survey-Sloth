@@ -212,18 +212,23 @@ post '/update_survey_title/:survey_id' do
 end
 
 # Update question text by ID
-post '/update_question_title/:question_id' do
-  puts "---------------===================  "
-  p params
-  p params[:text]
-  nil
+post '/update_question_text/:question_id' do
   Question.find(params[:question_id]).update(text: params[:text])
-  # Question.last.update(text: "What issssssssss the gub'mint hiding?")
 end
 
 # Delete question by ID
 post '/delete_question/:question_id' do
   Question.find(params[:question_id]).destroy
+end
+
+# Update response text by ID
+post '/update_response_text/:response_id' do
+  puts "---------------===================  "
+  p params
+  p params[:text]
+  nil
+  Response.find(params[:response_id]).update(text: params[:text])
+  # Question.last.update(text: "What issssssssss the gub'mint hiding?")
 end
 
 # Delete response by ID
