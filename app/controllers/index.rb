@@ -46,13 +46,13 @@ end
 
 post '/sign_in' do
 	@user = User.where(user_name: params[:user_name]).first
-	if @user.authenticate(params[:password])
+	if @user.nil?
+		@error_message = "Uh oh, buddy, looks like you've gotta get your shit together.  Try again."
+		erb :sign_in
+	else @user.authenticate(params[:password])
 		session[:user_id] = @user.id
 		session[:user_name] = @user.user_name
 		redirect to '/homepage'
-	else
-		@error_message = "Uh oh, buddy, looks like you've gotta get your shit together.  Try again."
-		erb :sign_in
 	end
 end
 
