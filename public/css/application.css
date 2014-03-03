@@ -17,6 +17,16 @@
   margin-right: ;
 }
 
+.sloth-nav {
+  text-align: center;
+  font-size: 2em;
+}
+
+.sign-in-error {
+  position: relative;
+  left: 10%;
+}
+
 .home a {
   color: white;
   text-decoration: none;
@@ -27,6 +37,7 @@
   bottom: 0;
   right: 0;
   height: 80%;
+  z-index: -1;
 }
 
 .headphone-sloth {
@@ -41,7 +52,7 @@
   position: fixed;
   bottom: 45%;
   left: 0;
-  height: 50%;
+  height: 51%;
   z-index: -1;
 }
 

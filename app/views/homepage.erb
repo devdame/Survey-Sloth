@@ -21,23 +21,12 @@ $(document).ready(function () {
 
 	<div class="container2">
 		<ul class="tabs">
-        <li class="active"><a href="#tab1">First tab</a></li>
-        <li><a href="#tab2">Second tab</a></li>
-        <li><a href="#tab3">Third tab</a></li>
+        <li class="active"><a href="#tab1">Sloth facts!</a></li>
+        <li><a href="#tab2">Your surveys!</a></li>
+        <li><a href="#tab3">Take a survey!</a></li>
     </ul>
  
     <div class="tab" id="tab1">
-     <h2>Here are your surveys, Face.</h2>
-			<div id="all_your_surveys">
-				<ol>
-				<%@user.authored_surveys.each do |survey|%>
-					<li><a href='edit_survey/<%= survey.id %>'><%=survey.title%></a></li>
-				<%end%>
-				</ol>
-			</div>
-    </div>
- 
-    <div class="tab" id="tab2">
         <h2><%= @user.user_name %></h2>
 	      <img src="../media/profile.jpg" class='profilePic'>
 	      <p>Email: <%=@user.email%></p>
@@ -56,6 +45,17 @@ $(document).ready(function () {
 					<%end%>
 					</ol>
 				</div>
+    </div>
+
+    <div class="tab" id="tab2">
+     <h2>Here are your surveys, Face.</h2>
+			<div id="all_your_surveys">
+				<ol>
+				<%@user.authored_surveys.each do |survey|%>
+					<li><a href='edit_survey/<%= survey.id %>'><%=survey.title%></a></li>
+				<%end%>
+				</ol>
+			</div>
     </div>
  
     <div class="tab" id="tab3">
