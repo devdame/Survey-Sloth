@@ -187,6 +187,7 @@ get '/edit_survey/:survey_id' do
 	erb :edit_survey
 end
 
+# Not used for Danny's AJAX survey update page
 post '/edit_survey/:survey_id' do
 	@survey = Survey.find(params[:survey_id])
 	@survey.title = params[:survey][:title]
@@ -197,15 +198,21 @@ post '/edit_survey/:survey_id' do
 	end
 end
 
-get '/delete_survey/:survey_id' do
+post '/delete_survey/:survey_id' do
   Survey.find(params[:survey_id]).destroy
   redirect to '/homepage'
 end
 
-get '/delete_question/:question_id' do
+# Update survey title text
+post '/update_survey_title/:survey_id' do
+  Survey.find(params[:survey_id]).update(title: params[:title])
+end
+
+#
+post '/delete_question/:question_id' do
   # Question.find(params[:question_id]).destroy
 end
 
-get '/delete_response/:response_id' do
+post '/delete_response/:response_id' do
   # Response.find(params[:response_id]).destroy
 end

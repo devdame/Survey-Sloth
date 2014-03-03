@@ -141,6 +141,45 @@ $(document).ready(function() {
     };
   });
 
+// --------- Survey Edit -------------
+
+$(".update-name-button").click(function(event){
+  var buttonElementId = $(this).attr('value');
+  var surveyTitle = $( "#survey-name" ).val();
+    $.ajax({
+      type: "POST",
+      url: "/update_survey_title/" + buttonElementId,
+      data: {title: surveyTitle},
+    }).done(function() {
+      $( "#survey-name" ).animate({backgroundColor: "#99FF99" }, "slow");
+    });
+});
+
+$(".update-response-button").click(function(event){
+  var buttonElementId = $(this).attr('value');
+  console.log(buttonElementId);
+  $( "#response-text-" + buttonElementId ).animate({backgroundColor: "#99FF99" }, "slow");
+});
+
+$(".delete-response-button").click(function(event){
+  var buttonElementId = $(this).attr('value');
+  console.log(buttonElementId);
+  $( event.target ).closest( "li" ).slideUp("slow");
+});
+
+$(".update-question-button").click(function(event){
+  var buttonElementId = $(this).attr('value');
+  console.log(buttonElementId);
+  $( "#question-text-" + buttonElementId ).animate({backgroundColor: "#99FF99" }, "slow");
+});
+
+$(".delete-question-button").click(function(event){
+  var buttonElementId = $(this).attr('value');
+  console.log(buttonElementId);
+  $( event.target ).closest( "#question-group" ).slideUp("slow");
+});
+
+
 
  //  +	$(element).thing(function(){
  // +		$(this).anotherthing();
