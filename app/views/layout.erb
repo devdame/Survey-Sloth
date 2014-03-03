@@ -7,6 +7,7 @@
     See: http://necolas.github.com/normalize.css/
   -->
   <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/blackout/stylesheet.css">
   <!--
     application.css is where you put your styles
   -->
@@ -18,22 +19,18 @@
   <script src="/js/application.js"></script>
   <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
   <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-
   <title>SurveySloth</title>
 </head>
 <body>
   <nav>
+    <p class='sloth-nav'><a href='/homepage'>Survey Sloth</a></p>
     <% if session[:user_id] %>
-      <p><a href='/homepage'>Survey Sloth</a></p>
-          <ul>
+      <ul id="side_nav">
         <li><a href='/sign_out'>Sign Out</a></li>
         <li><a href='/about'>About</a></li>
       </ul>
     <% else %>
-      <p><a href='/'>Survey Sloth</a></p>
-      <ul>
-        <li><a href='/sign_in'>Sign In</a></li>
-        <li><a href='/sign_up'>Sign Up</a></li>
+      <ul id="side_nav">
         <li><a href='/about'>About</a></li>
       </ul>
     <% end %>

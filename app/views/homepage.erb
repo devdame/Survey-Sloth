@@ -14,16 +14,15 @@ $(document).ready(function () {
 });
 </script>
 <body class='homepage'>
-<h2>Hello, <%= @user.user_name %>!</h2>
-
-
-	<button  class='create_survey'><a href="/create_survey">CREATE A SLOTH BASED SURVEY!</a></button>
-
+	<div id="user_greeting">
+		<h1>Hello, <%= @user.user_name %>!</h1>
+		<div  class='create_survey'><a href="/create_survey">Create a Sloth-Based Survey!</a></div>
+	</div>
 	<div class="container2">
 		<ul class="tabs">
-        <li class="active"><a href="#tab1">First tab</a></li>
-        <li><a href="#tab2">Second tab</a></li>
-        <li><a href="#tab3">Third tab</a></li>
+        <li class="active"><a href="#tab1">Sloth facts!</a></li>
+        <li><a href="#tab2">Your surveys!</a></li>
+        <li><a href="#tab3">Take a survey!</a></li>
     </ul>
 
     <div class="tab" id="tab1">
@@ -39,14 +38,13 @@ $(document).ready(function () {
     </div>
 
     <div class="tab" id="tab2">
+    		<button><a href="/update_user">Edit My User Info</a></button>
         <h2><%= @user.user_name %></h2>
 	      <img src="../media/profile.jpg" class='profilePic'>
 	      <p>Email: <%=@user.email%></p>
         <div class='info'>
         	<h3>Get to know <%=@user.user_name%>!</h3>
-        	<p>This is some random test text... test text, that's kinda funny
-        		I doubt anyone's gonna read this, so you should just stop reading if you
-        		are, it's not really going anywhere...</p>
+        	<p>About me:  <%= @user.about %></p>
         </div>
         <div class="profSurveys">
 	        <p>Take one of <%= @user.user_name%>'s surveys'!</p>
@@ -57,6 +55,17 @@ $(document).ready(function () {
 					<%end%>
 					</ol>
 				</div>
+    </div>
+
+    <div class="tab" id="tab2">
+     <h2>Here are your surveys, <%=@user.user_name%>.</h2>
+			<div id="all_your_surveys">
+				<ol>
+				<%@user.authored_surveys.each do |survey|%>
+					<li><a href='edit_survey/<%= survey.id %>'><%=survey.title%></a></li>
+				<%end%>
+				</ol>
+			</div>
     </div>
 
     <div class="tab" id="tab3">

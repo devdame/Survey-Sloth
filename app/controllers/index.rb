@@ -46,13 +46,13 @@ end
 
 post '/sign_in' do
 	@user = User.where(user_name: params[:user_name]).first
-	if @user.authenticate(params[:password])
+	if @user.nil?
+		@error_message = "Uh oh, buddy, looks like you've gotta get your shit together.  Try again."
+		erb :sign_in
+	else @user.authenticate(params[:password])
 		session[:user_id] = @user.id
 		session[:user_name] = @user.user_name
 		redirect to '/homepage'
-	else
-		@error_message = "Uh oh, buddy, looks like you've gotta get your shit together.  Try again."
-		erb :sign_in
 	end
 end
 
@@ -67,8 +67,8 @@ end
 #-----------------------
 
 get '/homepage' do
-	@user = User.find(session[:user_id])
-	if @user
+	if session[:user_id]
+		@user = User.find(session[:user_id])
 		@user_surveys = @user.authored_surveys
 		erb :homepage
 	else
@@ -87,6 +87,27 @@ end
 post '/users/:user_id' do
 	@user = User.find(params[:user_id])
 	erb :view_profile
+end
+
+#-----------------------
+
+get '/update_user' do
+	if session[:user_id]
+		@user = User.find(session[:user_id])
+		erb :update_user
+	else
+		redirect to '/'
+	end
+end
+
+post '/update_user' do
+	if session[:user_id]
+		@user = User.find(session[:user_id])
+		@user.update(params)
+		redirect to '/homepage'
+	else
+		redirect to '/'
+	end
 end
 
 #-----------------------
@@ -165,8 +186,8 @@ end
 
 get '/take_survey/:survey_id' do
 	@survey = Survey.find(params[:survey_id])
-	session[:user_id] = @user.id
-	erb :take_survey
+	erb :survey_face
+
 end
 
 

@@ -1,40 +1,15 @@
-<style>
-form {
-  border: 2px solid grey;
-  border-radius: 5px;
-  padding: 20px;
-  width: 20%;
-  background: linear-gradient(160deg, silver 20%, #FFFFF0 80%);
-  position: relative;
-  left: 100px;
-  top: 20px;
-}
- 
-form input {
-  margin: 2px;
-}
- 
-form button {
-  color: #006600;
-  background: silver;
-  -moz-box-shadow: 0 0 1px 1px green;
-  -webkit-box-shadow: 0 0 1px 1px green;
-  box-shadow: 0 0 1px 1px green;
-}
-</style>
+<h1>SIGN IN, DUDE.</h1>
 
-<h2>SIGN IN, DUDE.</h2>
-
-<form action="/sign_in" method="post" class='sign_in'>
-	<input type="text" name="user_name" placeholder="user name"><br>
+<form action="/sign_in" method="post" class='sign_in sign_forms'>
+	<input type="text" name="user_name" placeholder="user_name"><br>
 	<input type="password" name="password" placeholder="password">
 	<input type="submit" value="Sign on in!">
 </form>
 <br><br><br>
 
 <%if @error_message%>
-		<li><%=@error_message%></li>
+		<li class='sign-in-error'><%=@error_message%></li>
 <%end%>
 
 
-<img src="../media/sloth-sunglasses.jpg" class="sunny-sloth">
+<img src="../media/sloth-sunglasses.png" class="sunny-sloth">
