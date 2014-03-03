@@ -80,6 +80,14 @@
   z-index: -1;
 }
 
+.emblem-sloth {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  height: 20%;
+  z-index: -1;
+}
+
 .headphone-sloth {
   position: fixed;
   bottom: 30%;
