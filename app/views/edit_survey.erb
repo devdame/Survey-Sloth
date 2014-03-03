@@ -1,17 +1,32 @@
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script type="text/javascript" src="../js/analytics.js"></script>
+<div class="container3">
+  <h1>Edit <%= @survey.title%></h1>
+  Survey title:
+  <input type="text" name="title" value="<%= @survey.title%>" class="edit-field" id="survey-name"> <button class="update-name-button" value="<%= @survey.id %>">Update</button>
 
+  <ol class="edit-list">
 
+    <% @survey.questions.each do |question| %>
+      <div id="question-group">
+        <li>
+          <input class="question-text edit-field" type="text" name="" value="<%= question[:text] %>" id="question-text-<%= question.id %>">
+          <button class="update-question-button" value="<%= question.id %>">Update</button>
+          <button class="delete-question-button" value="<%= question.id %>">Delete</button>
+        </li>
 
-<html>
-<head>
-  <title><%= @survey.title%></title>
-</head>
-<div class='container3'>
-  <div class='analytics'>
-  </div>
+        <div class="responses">
+          <ul>
+            <% question.responses.each do |response| %>
+              <li id="response-<%= question.id %>">
+                <input class="edit-field" id="response-text-<%= response.id %>" type="text" value="<%= response.text %>">
+                <button class="update-response-button" value="<%= response.id %>">Update</button>
+                <button class="delete-response-button" value="<%= response.id %>">Delete</button>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+  </ol>
+
+  <a href="/homepage">I'm done editing. Take me home.</a>
 </div>
-<body>  
-
-</body>
-</html>

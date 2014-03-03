@@ -154,7 +154,7 @@ body {
 .container3{
   background: linear-gradient(40deg, white 20%, #FFFFF0 80%);
   box-shadow: 10px 10px 5px #888888;
-  margin: 10px;
+  margin: 20px auto;
   width: 700px;
   padding: 10px;
   border: 1px solid #000;
@@ -232,7 +232,7 @@ nav ul {
 
 nav li {
   display: inline;
-  padding: 10px; 
+  padding: 10px;
 }
 
 .tab {
@@ -269,7 +269,7 @@ nav li {
     height: 31px;
     padding: 9px 14px;
 }
- 
+
 .tabs li.active a {
     color: black;
     text-decoration: none;
@@ -341,3 +341,24 @@ available font weights:
 .responses ul {
   list-style-type: none;
 }
+
+.edit-field {
+  width: 20em;
+}
+
+.edit-field.title {
+  width: 23em;
+}
+
+.edit-list li {
+  padding: 0.5em;
+}
+
+.edit-list li:hover {
+  background-color: lightblue;
+}
+
+.edit-done {
+  background-color: lightgreen;
+}
+

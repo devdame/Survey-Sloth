@@ -141,6 +141,72 @@ $(document).ready(function() {
     };
   });
 
+// --------- Survey Edit -------------
+var successColor = "#99FF99"
+var transitionSpeed = "slow"
+
+$(".update-name-button").click(function(event){
+  var buttonElementId = $(this).attr('value');
+  var surveyTitle = $( "#survey-name" ).val();
+    $.ajax({
+      type: "POST",
+      url: "/update_survey_title/" + buttonElementId,
+      data: {title: surveyTitle},
+    }).done(function() {
+      $( "#survey-name" ).animate({backgroundColor: successColor }, transitionSpeed);
+    });
+});
+
+$(".update-response-button").click(function(event){
+  var buttonElementId = $(this).attr('value');
+  var fieldSelector = "#response-text-" + buttonElementId
+  var responseText = $( fieldSelector ).val();
+  $.ajax({
+      type: "POST",
+      url: "/update_response_text/" + buttonElementId,
+      data: {text: responseText},
+    }).done(function() {
+      $( "#response-text-" + buttonElementId ).animate({backgroundColor: successColor }, transitionSpeed);
+    });
+});
+
+$(".delete-response-button").click(function(event){
+  var buttonElementId = $(this).attr('value');
+  $.ajax({
+    type: "POST",
+    url: "/delete_response/" + buttonElementId,
+    data: {id: buttonElementId},
+  }).done(function() {
+    $( event.target ).closest( "li" ).slideUp(transitionSpeed);
+  });
+
+});
+
+$(".update-question-button").click(function(event){
+  var buttonElementId = $(this).attr('value');
+  var fieldSelector = "#question-text-" + buttonElementId
+  var questionText = $( fieldSelector ).val();
+    $.ajax({
+      type: "POST",
+      url: "/update_question_text/" + buttonElementId,
+      data: {text: questionText},
+    }).done(function() {
+      $( "#question-text-" + buttonElementId ).animate({backgroundColor: successColor }, transitionSpeed);
+    });
+});
+
+$(".delete-question-button").click(function(event){
+  var buttonElementId = $(this).attr('value');
+    $.ajax({
+    type: "POST",
+    url: "/delete_question/" + buttonElementId,
+    data: {id: buttonElementId},
+  }).done(function() {
+    $( event.target ).closest( "#question-group" ).slideUp(transitionSpeed);
+  });
+});
+
+
 
  //  +	$(element).thing(function(){
  // +		$(this).anotherthing();
