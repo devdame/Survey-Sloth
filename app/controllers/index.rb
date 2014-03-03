@@ -165,7 +165,8 @@ end
 
 get '/take_survey/:survey_id' do
 	@survey = Survey.find(params[:survey_id])
-	erb :take_survey
+	erb :survey_face
+
 end
 
 
