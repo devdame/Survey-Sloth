@@ -91,6 +91,27 @@ end
 
 #-----------------------
 
+get '/update_user' do
+	if session[:user_id]
+		@user = User.find(session[:user_id])
+		erb :update_user
+	else
+		redirect to '/'
+	end
+end
+
+post '/update_user' do
+	if session[:user_id]
+		@user = User.find(session[:user_id])
+		@user.update(params)
+		redirect to '/homepage'
+	else
+		redirect to '/'
+	end
+end
+
+#-----------------------
+
 
 get '/create_survey' do
 	erb :create_survey
