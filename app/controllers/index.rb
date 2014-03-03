@@ -183,7 +183,6 @@ end
 
 get '/edit_survey/:survey_id' do
 	@survey = Survey.find(params[:survey_id])
-  p @survey
 	erb :edit_survey
 end
 
@@ -223,10 +222,6 @@ end
 
 # Update response text by ID
 post '/update_response_text/:response_id' do
-  puts "---------------===================  "
-  p params
-  p params[:text]
-  nil
   Response.find(params[:response_id]).update(text: params[:text])
   # Question.last.update(text: "What issssssssss the gub'mint hiding?")
 end
