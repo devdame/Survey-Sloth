@@ -142,6 +142,8 @@ $(document).ready(function() {
   });
 
 // --------- Survey Edit -------------
+var successColor = "#99FF99"
+var transitionSpeed = "slow"
 
 $(".update-name-button").click(function(event){
   var buttonElementId = $(this).attr('value');
@@ -151,32 +153,54 @@ $(".update-name-button").click(function(event){
       url: "/update_survey_title/" + buttonElementId,
       data: {title: surveyTitle},
     }).done(function() {
-      $( "#survey-name" ).animate({backgroundColor: "#99FF99" }, "slow");
+      $( "#survey-name" ).animate({backgroundColor: successColor }, "slow");
     });
 });
 
 $(".update-response-button").click(function(event){
   var buttonElementId = $(this).attr('value');
   console.log(buttonElementId);
-  $( "#response-text-" + buttonElementId ).animate({backgroundColor: "#99FF99" }, "slow");
+  $( "#response-text-" + buttonElementId ).animate({backgroundColor: successColor }, "slow");
 });
 
 $(".delete-response-button").click(function(event){
   var buttonElementId = $(this).attr('value');
   console.log(buttonElementId);
-  $( event.target ).closest( "li" ).slideUp("slow");
+  $.ajax({
+    type: "POST",
+    url: "/delete_response/" + buttonElementId,
+    data: {id: buttonElementId},
+  }).done(function() {
+    $( event.target ).closest( "li" ).slideUp(transitionSpeed);
+  });
+
 });
 
 $(".update-question-button").click(function(event){
   var buttonElementId = $(this).attr('value');
-  console.log(buttonElementId);
-  $( "#question-text-" + buttonElementId ).animate({backgroundColor: "#99FF99" }, "slow");
+  var fieldSelector = "#question-text-" + buttonElementId
+  var questionText = $( fieldSelector ).val();
+  // var questionText = $( "#survey-name-" + buttonElementId ).val();
+    $.ajax({
+      type: "POST",
+      url: "/update_question_title/" + buttonElementId,
+      data: {text: questionText},
+    }).done(function() {
+      $( "#question-text-" + buttonElementId ).animate({backgroundColor: successColor }, transitionSpeed);
+    });
+
 });
 
 $(".delete-question-button").click(function(event){
   var buttonElementId = $(this).attr('value');
   console.log(buttonElementId);
-  $( event.target ).closest( "#question-group" ).slideUp("slow");
+    $.ajax({
+    type: "POST",
+    url: "/delete_question/" + buttonElementId,
+    data: {id: buttonElementId},
+  }).done(function() {
+    $( event.target ).closest( "#question-group" ).slideUp(transitionSpeed);
+  });
 });
 
 
