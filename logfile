@@ -1,3 +1,6 @@
 LOG:  database system was shut down at 2014-03-02 17:10:13 CST
 LOG:  database system is ready to accept connections
 LOG:  autovacuum launcher started
+FATAL:  database "Survey-Sloth_development" does not exist
+FATAL:  database "Survey-Sloth_development" does not exist
+FATAL:  database "Survey-Sloth_development" does not exist
