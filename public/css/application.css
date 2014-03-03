@@ -132,7 +132,6 @@
 body {
   margin-top: 50px;
   font-family: 'Roboto', sans-serif;
-  background-color: #FDFEF8;
 }
 
 .container {
@@ -257,7 +256,7 @@ nav li {
 }
 .tabs li a {
     color: #666;
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     text-decoration: none;
 }
 

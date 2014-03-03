@@ -26,14 +26,13 @@ $(document).ready(function () {
     </ul>
  
     <div class="tab" id="tab1">
+    		<button><a href="/update_user">Edit My User Info</a></button>
         <h2><%= @user.user_name %></h2>
 	      <img src="../media/profile.jpg" class='profilePic'>
 	      <p>Email: <%=@user.email%></p>
         <div class='info'>
         	<h3>Get to know <%=@user.user_name%>!</h3>
-        	<p>This is some random test text... test text, that's kinda funny
-        		I doubt anyone's gonna read this, so you should just stop reading if you
-        		are, it's not really going anywhere...</p>
+        	<p>About me:  <%= @user.about %></p>
         </div>
         <div class="profSurveys">
 	        <p>Take one of <%= @user.user_name%>'s surveys'!</p>
