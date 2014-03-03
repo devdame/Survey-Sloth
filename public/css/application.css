@@ -88,6 +88,11 @@
   z-index: -1;
 }
 
+.slothname {
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
 .birthday-sloth {
   position: fixed;
   bottom: 45%;
@@ -96,8 +101,8 @@
   z-index: -1;
 }
 
-.slothstronaut {
-  height: 400px;
+.slothpix {
+  width: 300px;
 }
 
 .about {
