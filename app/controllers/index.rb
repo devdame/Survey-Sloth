@@ -67,8 +67,8 @@ end
 #-----------------------
 
 get '/homepage' do
-	@user = User.find(session[:user_id])
-	if @user
+	if session[:user_id]
+		@user = User.find(session[:user_id])
 		@user_surveys = @user.authored_surveys
 		erb :homepage
 	else
