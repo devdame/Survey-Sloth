@@ -14,11 +14,10 @@ $(document).ready(function () {
 });
 </script>
 <body class='homepage'>
-<h2>Hello, <%= @user.user_name %>!</h2>
-
-
-	<button  class='create_survey'><a href="/create_survey">CREATE A SLOTH BASED SURVEY!</a></button>
-
+	<div id="user_greeting">
+		<h1>Hello, <%= @user.user_name %>!</h1>
+		<div  class='create_survey'><a href="/create_survey">Create a Sloth-Based Survey!</a></div>
+	</div>
 	<div class="container2">
 		<ul class="tabs">
         <li class="active"><a href="#tab1">Sloth facts!</a></li>

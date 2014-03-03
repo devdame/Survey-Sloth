@@ -9,17 +9,57 @@
   text-decoration: none;
 }
 
+#user_greeting {
+  margin-top: 60px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
 .sign_stuff {
   display: inline;
 }
 
-.sign_stuff:first {
-  margin-right: ;
+.sign_forms {
+  border: 2px solid grey;
+  border-radius: 5px;
+  padding: 20px;
+  width: 180px;
+  background: linear-gradient(160deg, silver 20%, #FFFFF0 80%);
+  position: relative;
+  left: 100px;
+  top: 20px;
+}
+
+.sign_forms input {
+  margin: 2px;
+  width: auto;
+}
+ 
+.sign_forms button {
+  color: #006600;
+  background: silver;
+  -moz-box-shadow: 0 0 1px 1px green;
+  -webkit-box-shadow: 0 0 1px 1px green;
+  box-shadow: 0 0 1px 1px green;
+}
+
+
+#logo {
+  padding-top: 40px;
+  margin-bottom: 15px;
+  font-family: blackoutmidnight;
+}
+
+.sign_stuff {
+  margin: 20px;
 }
 
 .sloth-nav {
+  position: absolute;
+  top: -28px;
+  font-family: blackoutmidnight;
   text-align: center;
-  font-size: 2em;
+  font-size: 2.3em;
 }
 
 .sign-in-error {
@@ -56,6 +96,11 @@
   z-index: -1;
 }
 
+.slothname {
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
 .birthday-sloth {
   position: fixed;
   bottom: 45%;
@@ -64,8 +109,8 @@
   z-index: -1;
 }
 
-.slothstronaut {
-  height: 400px;
+.slothpix {
+  width: 300px;
 }
 
 .about {
@@ -141,9 +186,11 @@ h1 {
   font-family: 'Roboto', sans-serif;
   font-size: 4em;
   font-weight: 100;
+  margin: 0;
 }
 
 nav {
+  z-index: 3;
   background-color: #2E2E2E;
   color: white;
   height: 50px;
@@ -274,13 +321,15 @@ nav li {
 }
 
 .create_survey{
-  position: absolute;
-  left: 800px;
-  top: 125px;
+  background: black;
+  display: inline-block;
+  border-radius: 15px;
+  padding: 10px;
 }
 
 .create_survey a{
-  color: black;
+  font-family: 'Roboto', sans-serif;
+  color: white;
   text-decoration: none;
 }
 
