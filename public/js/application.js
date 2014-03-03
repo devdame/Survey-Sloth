@@ -159,7 +159,6 @@ $(".update-name-button").click(function(event){
 
 $(".update-response-button").click(function(event){
   var buttonElementId = $(this).attr('value');
-  console.log(buttonElementId);
   var fieldSelector = "#response-text-" + buttonElementId
   var responseText = $( fieldSelector ).val();
   $.ajax({
@@ -173,7 +172,6 @@ $(".update-response-button").click(function(event){
 
 $(".delete-response-button").click(function(event){
   var buttonElementId = $(this).attr('value');
-  console.log(buttonElementId);
   $.ajax({
     type: "POST",
     url: "/delete_response/" + buttonElementId,
@@ -199,7 +197,6 @@ $(".update-question-button").click(function(event){
 
 $(".delete-question-button").click(function(event){
   var buttonElementId = $(this).attr('value');
-  console.log(buttonElementId);
     $.ajax({
     type: "POST",
     url: "/delete_question/" + buttonElementId,
