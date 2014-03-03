@@ -20,13 +20,13 @@ $(document).ready(function () {
 	</div>
 	<div class="container2">
 		<ul class="tabs">
-        <li class="active"><a href="#tab1">Sloth facts!</a></li>
+        <li class="active"><a href="#tab1">Your slothfile!</a></li>
         <li><a href="#tab2">Your surveys!</a></li>
         <li><a href="#tab3">Take a survey!</a></li>
     </ul>
 
     <div class="tab" id="tab1">
-     <h2>Here are your surveys, Face.</h2>
+     <h2>Here are your surveys, <%=@user.user_name%>!</h2>
 			<div id="all_your_surveys">
 				<ol>
 				<%@user.authored_surveys.order(:id).each do |survey|%>
@@ -55,17 +55,6 @@ $(document).ready(function () {
 					<%end%>
 					</ol>
 				</div>
-    </div>
-
-    <div class="tab" id="tab2">
-     <h2>Here are your surveys, <%=@user.user_name%>.</h2>
-			<div id="all_your_surveys">
-				<ol>
-				<%@user.authored_surveys.order(:id).each do |survey|%>
-					<li><a href='edit_survey/<%= survey.id %>'><%=survey.title%></a></li>
-				<%end%>
-				</ol>
-			</div>
     </div>
 
     <div class="tab" id="tab3">
