@@ -29,7 +29,7 @@ $(document).ready(function () {
      <h2>Here are your surveys, Face.</h2>
 			<div id="all_your_surveys">
 				<ol>
-				<%@user.authored_surveys.each do |survey|%>
+				<%@user.authored_surveys.order(:id).each do |survey|%>
           <li><%=survey.title%>
             <br><a href="#">Stats</a> | <a href="/edit_survey/<%= survey.id %>">Edit</a> | <a href="/delete_survey/<%= survey.id %>">Delete</a></li>
 				<%end%>
@@ -50,7 +50,7 @@ $(document).ready(function () {
 	        <p>Take one of <%= @user.user_name%>'s surveys'!</p>
 
 					<ol>
-					<%@user.authored_surveys.each do |survey|%>
+					<%@user.authored_surveys.order(:id).each do |survey|%>
 						<li><a href='surveys/<%=survey.id%>'><%=survey.title%></a></li>
 					<%end%>
 					</ol>
@@ -61,7 +61,7 @@ $(document).ready(function () {
      <h2>Here are your surveys, <%=@user.user_name%>.</h2>
 			<div id="all_your_surveys">
 				<ol>
-				<%@user.authored_surveys.each do |survey|%>
+				<%@user.authored_surveys.order(:id).each do |survey|%>
 					<li><a href='edit_survey/<%= survey.id %>'><%=survey.title%></a></li>
 				<%end%>
 				</ol>
@@ -72,7 +72,7 @@ $(document).ready(function () {
         <h2>Take and View other surveys!</h2>
 			<div id="other_surveys">
 				<ol>
-				<%Survey.all.each do |survey|%>
+				<%Survey.all.order(:id).each do |survey|%>
 					<li><a href='surveys/<%=survey.id%>'><%=survey.title%></a></li>
 				<%end%>
 				</ol>

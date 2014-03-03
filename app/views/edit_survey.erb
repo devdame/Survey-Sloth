@@ -5,7 +5,7 @@
 
   <ol class="edit-list">
 
-    <% @survey.questions.each do |question| %>
+    <% @survey.questions.order(:id).each do |question| %>
       <div id="question-group">
         <li>
           <input class="question-text edit-field" type="text" name="" value="<%= question[:text] %>" id="question-text-<%= question.id %>">
@@ -15,7 +15,7 @@
 
         <div class="responses">
           <ul>
-            <% question.responses.each do |response| %>
+            <% question.responses.order(:id).each do |response| %>
               <li id="response-<%= question.id %>">
                 <input class="edit-field" id="response-text-<%= response.id %>" type="text" value="<%= response.text %>">
                 <button class="update-response-button" value="<%= response.id %>">Update</button>
