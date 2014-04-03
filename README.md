@@ -13,11 +13,15 @@ SurveySloth is a sloth-themed website where users can create and take surveys.  
 
 ###Contributors:
 
-*[Jack Dubnicek](https://www.github.com/jdubnicek)
-*[Daniel Lu](https://www.github.com/dandydanny)
-*[Andrew Wittrock](https://www.github.com/birdrock)
-*[Chris Scherer](https://www.github.com/chrisscherer)
-*[Lauren Scott](https://www.github.com/devdame)
+[Jack Dubnicek](https://www.github.com/jdubnicek)
+
+[Daniel Lu](https://www.github.com/dandydanny)
+
+[Andrew Wittrock](https://www.github.com/birdrock)
+
+[Chris Scherer](https://www.github.com/chrisscherer)
+
+[Lauren Scott](https://www.github.com/devdame)
 
 
 Using @DandyDanny's custom sinatra skeleton.
